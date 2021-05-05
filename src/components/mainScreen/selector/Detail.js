@@ -11,5 +11,7 @@ function Detail() {
       <hr />
       <hr />
     </React.Fragment>
-  )
-}
+  );
+};
+
+export default Detail;

@@ -1,14 +1,16 @@
 import SelectorController from "./selector/SelectorController";
 import FormController from "./forms/FormController";
-import LoginController from "./login/LoginController";
+import LogInController from "./login/LogInController";
 
 function MainScreenController() {
+
+  // * Logic for displaying between SelectorController, FormController, and LogInController components will go here
 
   return (
     <React.Fragment>
       <SelectorController />
       <FormController />
-      <LoginController />
+      <LogInController />
     </React.Fragment>
   );
 };

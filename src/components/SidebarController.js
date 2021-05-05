@@ -3,6 +3,8 @@ import MainScreenController from "./mainScreen/MainScreenController";
 
 function SidebarController() {
 
+  // * logic for displaying between Sidebar and MainScreenController components will go here
+
   return (
     <React.Fragment>
       <Sidebar />
