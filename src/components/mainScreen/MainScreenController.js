@@ -1,3 +1,4 @@
+import React from 'react';
 import SelectorController from "./selector/SelectorController";
 import FormController from "./forms/FormController";
 import LogInController from "./login/LogInController";
@@ -15,4 +16,4 @@ function MainScreenController() {
   );
 };
 
-export default MainScreenController
+export default MainScreenController;
