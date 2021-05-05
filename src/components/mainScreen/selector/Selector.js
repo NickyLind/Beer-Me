@@ -13,12 +13,14 @@ function Selector() {
         <option>IPA</option>
         <option>Cider</option>
       </select>
+      <br />
       <label>Brewery</label>
       <select>
         <option>Rogue</option>
         <option>Fortside</option>
         <option>Pfriem</option>
       </select>
+      <br />
       <button>Beer Me!</button>
       <hr />
     </React.Fragment>
