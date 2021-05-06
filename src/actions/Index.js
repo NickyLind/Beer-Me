@@ -8,6 +8,6 @@ export const toggleBeerMe = () => ({
   type: c.TOGGLE_BEER_SELECTOR
 });
 
-export const toggleBeerForm = () => ({
+export const toggleNewBeerForm = () => ({
   type: c.TOGGLE_BEER_FORM
 });
