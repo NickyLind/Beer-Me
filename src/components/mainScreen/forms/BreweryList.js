@@ -20,7 +20,7 @@ function BreweryList(props) {
 </p>
       </div>
       <button onClick={props.onAddNewBeer}>Add new beer</button>
-      <button>add new brewery</button>
+      <button onClick={props.onAddNewBrewery}>add new brewery</button>
       <hr />
     </React.Fragment>
   );

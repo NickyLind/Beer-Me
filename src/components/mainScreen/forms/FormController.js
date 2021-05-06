@@ -18,24 +18,28 @@ function FormController(props) {
     dispatch(action);
   }
 
+  const toggleNewBreweryForm = () => {
+    const { dispatch } = props
+    const action = a.toggleNewBreweryForm();
+    dispatch(action);
+  }
+
   if (props.newBeerFormVisible) {
     return (
-      <NewBeerForm />
+      <NewBeerForm onAddNewBeer={toggleNewBeerForm} />
     )
     // } else if () {
     //   return (
     //     <EditBeerForm />
     //       {/* beerEditing = true */ }
     //   )
-    // } else if () {
+  } else if (props.newBreweryFormVisible) {
+    return (
+      <NewBreweryForm onAddNewBrewery={toggleNewBreweryForm} />
+    )
+    // } else if (props.newBreweryFormVisible) {
     //   return (
-    //     <NewBreweryForm />
-    //     {/* breweryFormVisibleOnPage = true */ }
-    // )
-    // } else if () {
-    //   return (
-    //     <EditBreweryForm />
-    //     {/* breweryEditing = true */ }
+    //     <EditBreweryForm  />
     //   )
     // } else if () {
     //   return (
@@ -46,14 +50,15 @@ function FormController(props) {
     // )
   } else {
     return (
-      <BreweryList onAddNewBeer={toggleNewBeerForm} />
+      <BreweryList onAddNewBeer={toggleNewBeerForm} onAddNewBrewery={toggleNewBreweryForm} />
     )
   }
 };
 
 const mapStateToProps = state => {
   return {
-    newBeerFormVisible: state.newBeerFormVisible
+    newBeerFormVisible: state.newBeerFormVisible,
+    newBreweryFormVisible: state.newBreweryFormVisible,
   }
 };
 

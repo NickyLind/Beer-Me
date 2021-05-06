@@ -1,6 +1,6 @@
 import React from 'react';
 
-function ReusableBreweryForm() {
+function ReusableBreweryForm(props) {
 
   return (
     <React.Fragment>
@@ -15,6 +15,8 @@ function ReusableBreweryForm() {
         </input>
       </form>
       <hr />
+      <button>submit</button>
+      <button onClick={props.onAddNewBrewery}>Go back</button>
     </React.Fragment>
   )
 }

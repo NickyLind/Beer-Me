@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-function ReusableBeerForm() {
+function ReusableBeerForm(props) {
 
 
 
@@ -24,6 +24,8 @@ function ReusableBeerForm() {
         </input>
       </form>
       <hr />
+      <button>submit</button>
+      <button onClick={props.onAddNewBeer}>Go back</button>
     </React.Fragment>
   )
 }
