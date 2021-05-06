@@ -15,3 +15,7 @@ export const toggleNewBeerForm = () => ({
 export const toggleNewBreweryForm = () => ({
   type: c.TOGGLE_BREWERY_FORM
 });
+
+export const toggleLogin = () => ({
+  type: c.TOGGLE_LOGIN
+});
