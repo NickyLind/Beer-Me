@@ -1,70 +1,55 @@
-# Getting Started with Create React App
+# _Beer Me!_
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#### _This application showcases CRUD functionality with React components_
 
-## Available Scripts
+#### By _**Nick Lindau**_
 
-In the project directory, you can run:
+## Technologies Used
 
-### `npm start`
+* _React_
+* _Redux_
+* _HTML5_
+* _Javascript_
+* _CSS3_
+* _Visual Studio Code_
+* _Node Package Manager_
+* _webpack_
+* _eslint_
+## Description
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+    This application is the start of my capstone project for Epicodus that will showcase many of the tools I learned as a student there
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Setup/Installation Requirements
+To run this application you will need the following:
+* A code editor. [Visual Studio Code](https://code.visualstudio.com/) is what I use.
+* [Node](https://nodejs.org/en/download/)
+### 1) Cloning the Project:
+* Find the respository at (https://github.com/NickyLind/Tap-Room)
+* Select the green <span style="color:green">'Code'</span> button above the repository and copy the HHTPS link
+* In your terminal, find the directory you want to place the `Tap-Room` directory in
+* In your terminal, use the git command `$git clone https://github.com/NickyLind/Beer-Me`
+* Open in Visual Studio Code or another editor
 
-### `npm test`
+### 2) Running the project:
+* Navigate to the `Beer-Me` directory and build the project with the command `npm install` in the command line to install packages needed to run this project.
+* Once the project packages are succesfully installed you may run the command `npm run start` and a browser should automatically be opened to http://localhost:3000/
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Component Diagram
+Here is a diagram of how all the components are structured
+![component tree](/src/img/CapstoneComponentTree.png)
 
-### `npm run build`
+## Known Bugs
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* _N/A_
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## License
 
-### `npm run eject`
+_[MIT](https://choosealicense.com/licenses/mit/)_
+ _Copyright (c) Nick Lindau 05/07/2021_
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Contact Information
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+_Nick Lindau @ <nicholaithegreat@gmail.com>_
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
