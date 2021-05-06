@@ -19,6 +19,13 @@
 
     This application is the start of my capstone project for Epicodus that will showcase many of the tools I learned as a student there
 
+## Time Logged Outside of Commits
+
+* 1.5 hours whiteboarding (below)
+* 3 hours planning component chart (below)
+* .5 hours making a list of tasks to get started programming the application
+
+
 ## Setup/Installation Requirements
 To run this application you will need the following:
 * A code editor. [Visual Studio Code](https://code.visualstudio.com/) is what I use.
@@ -37,6 +44,10 @@ To run this application you will need the following:
 ## Component Diagram
 Here is a diagram of how all the components are structured
 ![component tree](/src/img/CapstoneComponentTree.png)
+
+## Initial Whiteboarding
+Here is the initial whitebaording I did to plan out this project and it's features
+![whiteboarding](/src/img/whiteboard.jpg)
 
 ## Known Bugs
 

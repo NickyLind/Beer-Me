@@ -7,3 +7,7 @@ export const toggleSidebar = () => ({
 export const toggleBeerMe = () => ({
   type: c.TOGGLE_BEER_SELECTOR
 });
+
+export const toggleBeerForm = () => ({
+  type: c.TOGGLE_BEER_FORM
+});
