@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Selector() {
+function Selector(props) {
 
   return (
     <React.Fragment>
@@ -21,7 +21,7 @@ function Selector() {
         <option>Pfriem</option>
       </select>
       <br />
-      <button>Beer Me!</button>
+      <button onClick={props.toggleSelector}>Beer Me!</button>
       <hr />
     </React.Fragment>
   );
