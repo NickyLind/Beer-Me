@@ -3,9 +3,14 @@ import * as a from "../../actions";
 
 function Sidebar(props) {
   const handleClickLogin = () => {
-    props.onDisplayLoginOnMain()
-    props.onToggleSidebar()
-  }
+    props.onDisplayLoginOnMain();
+    props.onToggleSidebar();
+  };
+
+  const handleClickYourBreweries = () => {
+    props.onDisplayFormsOnMain();
+    props.onToggleSidebar();
+  };
 
 
 
@@ -16,7 +21,7 @@ function Sidebar(props) {
       <hr />
       <button onClick={handleClickLogin} >Login/Signup</button><br />
       <button onClick={props.onLogOut}>Logout</button><br />
-      <button>Your Breweries</button><br />
+      <button onClick={handleClickYourBreweries}>{props.buttonText}</button><br />
       <hr />
     </React.Fragment>
   );

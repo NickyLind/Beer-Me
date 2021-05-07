@@ -17,13 +17,16 @@ function MainScreenController(props) {
     dispatch(action2)
   }
 
+
   if (props.displayLoginOnMain) {
     return (
       <LogInController onReturnHome={handleDisplayLogin} />
     )
   } else if (props.displayFormsOnMain) {
     return (
-      <FormController />
+      <React.Fragment>
+        <FormController />
+      </React.Fragment>
     )
   } else {
     return (

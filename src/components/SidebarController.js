@@ -28,13 +28,29 @@ function SidebarController(props) {
     dispatch(action2)
   };
 
+  const handleDisplayForms = () => {
+    const { dispatch } = props;
+    const action = a.displayFormsOnMain();
+    dispatch(action);
+  };
+
+  let buttonText = ""
+  if (props.displayFormsOnMain) {
+    buttonText = "Home"
+  } else {
+    buttonText = "Your Breweries"
+  }
+
   if (props.sidebarVisible) {
     return (
       <React.Fragment>
         <button onClick={handleClick}>SidebarButton</button>
         <Sidebar
-          onDisplayLoginOnMain={handleDisplayLogin} onToggleSidebar={handleClick}
+          onDisplayLoginOnMain={handleDisplayLogin}
+          onDisplayFormsOnMain={handleDisplayForms}
+          onToggleSidebar={handleClick}
           onLogOut={handleLogOut}
+          buttonText={buttonText}
         />
         <MainScreenController />
       </React.Fragment>
