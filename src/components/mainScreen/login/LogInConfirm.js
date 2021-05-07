@@ -11,6 +11,7 @@ function LogInConfirm() {
       <p>OR</p>
       <p>There was an error with your login!</p>
       <hr />
+      <button>Home</button>
     </React.Fragment>
   );
 };

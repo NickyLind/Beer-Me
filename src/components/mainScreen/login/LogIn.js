@@ -9,7 +9,7 @@ function LogIn(props) {
       <hr />
       <button onClick={props.onLoggingIn}>Log In</button><br />
       <p>OR</p>
-      <button>Sign Up</button>
+      <button onClick={props.onLoggingIn}>Sign Up</button>
       <hr />
     </React.Fragment>
   );

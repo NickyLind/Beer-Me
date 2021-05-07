@@ -19,3 +19,15 @@ export const toggleNewBreweryForm = () => ({
 export const toggleLogin = () => ({
   type: c.TOGGLE_LOGIN
 });
+
+export const displaySelectorOnMain = () => ({
+  type: c.DISPLAY_SELECTOR_ON_MAIN
+});
+
+export const displayLoginOnMain = () => ({
+  type: c.DISPLAY_LOGIN_ON_MAIN
+});
+
+export const displayFormsOnMain = () => ({
+  type: c.DISPLAY_FORMS_ON_MAIN
+});

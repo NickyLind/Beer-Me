@@ -1,14 +1,21 @@
 import React from 'react';
+import * as a from "../../actions";
 
-function Sidebar() {
+function Sidebar(props) {
+  const handleClickLogin = () => {
+    props.onDisplaySelectorOnMain()
+    props.onToggleSidebar()
+  }
+
+
 
   return (
     <React.Fragment>
       <hr />
       <h3><em>SideBar</em></h3>
       <hr />
-      <button>Login/Signup</button><br />
-      <button>Logout</button><br />
+      <button onClick={handleClickLogin} >Login/Signup</button><br />
+      <button onClick={props.onLogOut}>Logout</button><br />
       <button>Your Breweries</button><br />
       <hr />
     </React.Fragment>
@@ -16,3 +23,4 @@ function Sidebar() {
 };
 
 export default Sidebar
+// onClick={props.onToggleSidebar}

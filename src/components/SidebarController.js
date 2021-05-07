@@ -14,11 +14,28 @@ function SidebarController(props) {
     dispatch(action);
   }
 
+  const handleDisplaySelector = () => {
+    const { dispatch } = props;
+    const action = a.displaySelectorOnMain();
+    dispatch(action);
+  }
+
+  const handleLogOut = () => {
+    const { dispatch } = props;
+    const action = a.toggleLogin();
+    dispatch(action);
+    const action2 = a.toggleSidebar();
+    dispatch(action2)
+  };
+
   if (props.sidebarVisible) {
     return (
       <React.Fragment>
         <button onClick={handleClick}>SidebarButton</button>
-        <Sidebar />
+        <Sidebar
+          onDisplaySelectorOnMain={handleDisplaySelector} onToggleSidebar={handleClick}
+          onLogOut={handleLogOut}
+        />
         <MainScreenController />
       </React.Fragment>
     )
@@ -35,6 +52,10 @@ function SidebarController(props) {
 const mapStateToProps = state => {
   return {
     sidebarVisible: state.sidebarVisible,
+    displaySelectorOnMain: state.displaySelectorOnMain,
+    displayLoginOnMain: state.displayLoginOnMain,
+    displayFormsOnMain: state.displayFormsOnMain,
+    loginVisible: state.loginVisible,
   }
 };
 
