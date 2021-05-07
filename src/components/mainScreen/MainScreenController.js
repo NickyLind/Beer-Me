@@ -8,9 +8,16 @@ import * as a from "./../../actions";
 function MainScreenController(props) {
 
   // * Logic for displaying between SelectorController, FormController, and LogInController components will go here
+
+  const handleDisplaySelector = () => {
+    const { dispatch } = props;
+    const action = a.displaySelectorOnMain();
+    dispatch(action);
+  }
+
   if (props.displaySelectorOnMain) {
     return (
-      <LogInController />
+      <LogInController onReturnHome={handleDisplaySelector} />
     )
     // } else if () {
     //   return (

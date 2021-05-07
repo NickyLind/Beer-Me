@@ -1,6 +1,6 @@
 import React from 'react';
 
-function LogInConfirm() {
+function LogInConfirm(props) {
 
   return (
     <React.Fragment>
@@ -11,7 +11,7 @@ function LogInConfirm() {
       <p>OR</p>
       <p>There was an error with your login!</p>
       <hr />
-      <button>Home</button>
+      <button onClick={props.onReturnHome}>Home</button>
     </React.Fragment>
   );
 };

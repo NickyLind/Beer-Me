@@ -22,7 +22,7 @@ function LogInController(props) {
   } else {
     return (
       <React.Fragment>
-        <LogInConfirm />
+        <LogInConfirm onReturnHome={props.onReturnHome} />
       </React.Fragment>
     )
   }
