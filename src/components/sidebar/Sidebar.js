@@ -3,7 +3,7 @@ import * as a from "../../actions";
 
 function Sidebar(props) {
   const handleClickLogin = () => {
-    props.onDisplaySelectorOnMain()
+    props.onDisplayLoginOnMain()
     props.onToggleSidebar()
   }
 

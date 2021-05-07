@@ -9,20 +9,22 @@ function MainScreenController(props) {
 
   // * Logic for displaying between SelectorController, FormController, and LogInController components will go here
 
-  const handleDisplaySelector = () => {
+  const handleDisplayLogin = () => {
     const { dispatch } = props;
-    const action = a.displaySelectorOnMain();
+    const action = a.displayLoginOnMain();
     dispatch(action);
+    const action2 = a.displaySelectorOnMain();
+    dispatch(action2)
   }
 
-  if (props.displaySelectorOnMain) {
+  if (props.displayLoginOnMain) {
     return (
-      <LogInController onReturnHome={handleDisplaySelector} />
+      <LogInController onReturnHome={handleDisplayLogin} />
     )
-    // } else if () {
-    //   return (
-    //     <FormController />
-    //   )
+  } else if (props.displayFormsOnMain) {
+    return (
+      <FormController />
+    )
   } else {
     return (
       <SelectorController />
@@ -33,6 +35,8 @@ function MainScreenController(props) {
 const mapStateToProps = state => {
   return {
     displaySelectorOnMain: state.displaySelectorOnMain,
+    displayFormsOnMain: state.displayFormsOnMain,
+    displayLoginOnMain: state.displayLoginOnMain
   }
 };
 
