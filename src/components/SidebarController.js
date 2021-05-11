@@ -7,6 +7,7 @@ import { connect } from "react-redux";
 function SidebarController(props) {
 
   // * logic for displaying between Sidebar and MainScreenController components will go here
+  // ! there is a bug where logging out while displaying brewery list will have the go back button return to brewery list instead of beer selector
 
   const handleClick = () => {
     const { dispatch } = props;
@@ -39,6 +40,13 @@ function SidebarController(props) {
     buttonText = "Home"
   } else {
     buttonText = "Your Breweries"
+  };
+
+  let loginText = "";
+  if (props.loginVisible) {
+    loginText = "Log Out"
+  } else {
+    loginText = "Log In"
   }
 
   if (props.sidebarVisible) {
@@ -51,6 +59,7 @@ function SidebarController(props) {
           onToggleSidebar={handleClick}
           onLogOut={handleLogOut}
           buttonText={buttonText}
+          loginText={loginText}
         />
         <MainScreenController />
       </React.Fragment>
