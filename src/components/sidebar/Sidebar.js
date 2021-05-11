@@ -1,5 +1,6 @@
 import React from 'react';
-import * as a from "../../actions";
+import { connect } from "react-redux";
+
 
 function Sidebar(props) {
   const handleClickLogin = () => {
@@ -30,6 +31,14 @@ function Sidebar(props) {
     </React.Fragment>
   );
 };
+
+const mapStateToProps = state => {
+  return {
+    loginVisible: state.loginVisible,
+  }
+}
+
+Sidebar = connect(mapStateToProps)(Sidebar)
 
 export default Sidebar
 // onClick={props.onToggleSidebar}
