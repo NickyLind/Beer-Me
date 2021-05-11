@@ -46,7 +46,7 @@ Here is a diagram of how all the components are structured
 ![component tree](/src/img/CapstoneComponentTree.png)
 
 ## Initial Whiteboarding
-Here is the initial whitebaording I did to plan out this project and it's features
+Here is the initial whiteboarding I did to plan out this project and it's features
 ![whiteboarding](/src/img/whiteboard.jpg)
 
 ## Known Bugs
