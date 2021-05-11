@@ -6,9 +6,8 @@ function Sidebar(props) {
     if (!props.loginVisible) {
       props.onDisplayLoginOnMain();
       props.onToggleSidebar();
-    } else {
+    } else if (props.loginVisible == true) {
       props.onLogOut();
-      props.onDisplayLoginOnMain();
     }
   };
 
@@ -26,7 +25,6 @@ function Sidebar(props) {
       <h3><em>SideBar</em></h3>
       <hr />
       <button onClick={handleClickLogin} >{props.loginText}</button><br />
-      <button onClick={props.onLogOut}>Logout</button><br />
       <button onClick={handleClickYourBreweries}>Your Breweries</button><br />
       <hr />
     </React.Fragment>
