@@ -25,9 +25,11 @@ function FormController(props) {
   };
 
   const handleAddingNewBeerToList = (newBeer) => {
-    const { dispatch } = this.props;
+    const { dispatch } = props;
     const action = a.addBeer(newBeer);
     dispatch(action);
+    const action2 = a.toggleNewBeerForm();
+    dispatch(action2);
 
   }
 
@@ -60,7 +62,11 @@ function FormController(props) {
     // )
   } else {
     return (
-      <BreweryList onAddNewBeer={toggleNewBeerForm} onAddNewBrewery={toggleNewBreweryForm} />
+      <BreweryList
+        onAddNewBeer={toggleNewBeerForm}
+        onAddNewBrewery={toggleNewBreweryForm}
+        beerList={props.masterBeerList}
+      />
     )
   }
 };

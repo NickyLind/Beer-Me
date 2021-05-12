@@ -11,11 +11,11 @@ function NewBeerForm(props) {
       {
         name: event.target.name.value,
         style: event.target.style.value,
-        ABV: event.target.ABV.value,
+        abv: event.target.abv.value,
         description: event.target.description.value,
         id: v4(),
       }
-    )
+    );
   }
 
   return (

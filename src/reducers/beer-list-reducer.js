@@ -1,7 +1,7 @@
 import * as c from "../actions/ActionTypes";
 
 export default (state = {}, action) => {
-  const { name, style, ABV, description, id } = action;
+  const { name, style, abv, description, id } = action;
 
   switch (action.type) {
     case c.ADD_BEER:
@@ -9,7 +9,7 @@ export default (state = {}, action) => {
         [id]: {
           name,
           style,
-          ABV,
+          abv,
           description,
           id,
         }

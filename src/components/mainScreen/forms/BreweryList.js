@@ -1,4 +1,5 @@
 import React from 'react';
+import Beer from "./Beer";
 
 function BreweryList(props) {
 
@@ -16,8 +17,16 @@ function BreweryList(props) {
       <h3><em>Brewery List Component</em></h3>
       <hr />
       <div style={scrollBox}>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla.
-</p>
+        {Object.values(props.beerList).map((beer) =>
+          <Beer
+            name={beer.name}
+            style={beer.style}
+            abv={beer.abv}
+            description={beer.description}
+            id={beer.id}
+            key={beer.id}
+          />
+        )}
       </div>
       <button onClick={props.onAddNewBeer}>Add new beer</button>
       <button onClick={props.onAddNewBrewery}>add new brewery</button>

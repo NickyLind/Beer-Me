@@ -7,7 +7,7 @@ function Sidebar(props) {
     if (!props.loginVisible) {
       props.onDisplayLoginOnMain();
       props.onToggleSidebar();
-    } else if (props.loginVisible == true) {
+    } else if (props.loginVisible === true) {
       props.onLogOut();
     }
   };
