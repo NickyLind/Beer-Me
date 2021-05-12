@@ -16,6 +16,7 @@ function Brewery(props) {
           description={beer.description}
           id={beer.id}
           key={beer.id}
+          breweryId={props.id}
         />
       )}
     </React.Fragment>

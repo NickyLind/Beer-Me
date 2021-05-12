@@ -10,6 +10,7 @@ function Beer(props) {
       <p>{props.abv}</p>
       <p>{props.description}</p>
       <p>{props.id}</p>
+      <p>{props.breweryId}</p>
     </React.Fragment>
   );
 };
