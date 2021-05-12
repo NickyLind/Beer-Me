@@ -5,9 +5,7 @@ function Brewery(props) {
 
   return (
     <React.Fragment>
-      <h4>{props.name}</h4>
-      <p>{props.location}</p>
-      <p>{props.description}</p>
+      <h4 onClick={() => props.whenBreweryClicked(props.id)}>{props.name}</h4>
     </React.Fragment>
   )
 };

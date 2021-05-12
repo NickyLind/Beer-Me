@@ -20,6 +20,7 @@ function BreweryList(props) {
       <div style={scrollBox}>
         {Object.values(props.breweryList).map((brewery =>
           <Brewery
+            whenBreweryClicked={props.onBrewerySelection}
             name={brewery.name}
             location={brewery.location}
             description={brewery.description}

@@ -7,6 +7,7 @@ import BreweryList from "./BreweryList";
 import Confirm from "./Confirm";
 import { connect } from "react-redux";
 import * as a from "../../../actions/index.js";
+import BreweryDetail from './BreweryDetail';
 
 function FormController(props) {
 
@@ -40,11 +41,24 @@ function FormController(props) {
     dispatch(action2);
   };
 
+  const handleChangingSelectedBrewery = (id) => {
+    const selectedBrewery = props.masterBreweryList[id];
+    const { dispatch } = props;
+    const action = a.selectedBrewery(selectedBrewery)
+    dispatch(action);
+  }
+
   if (props.newBeerFormVisible) {
     return (
       <NewBeerForm
         onAddNewBeer={toggleNewBeerForm}
         onNewBeerCreation={handleAddingNewBeerToList}
+      />
+    )
+  } else if (props.selectedBrewery != null) {
+    return (
+      <BreweryDetail
+        brewery={props.selectedBrewery}
       />
     )
     // } else if () {
@@ -77,6 +91,7 @@ function FormController(props) {
         onAddNewBrewery={toggleNewBreweryForm}
         beerList={props.masterBeerList}
         breweryList={props.masterBreweryList}
+        onBrewerySelection={handleChangingSelectedBrewery}
       />
     )
   }
@@ -88,6 +103,7 @@ const mapStateToProps = state => {
     newBreweryFormVisible: state.newBreweryFormVisible,
     masterBeerList: state.masterBeerList,
     masterBreweryList: state.masterBreweryList,
+    selectedBrewery: state.selectedBrewery,
   }
 };
 
