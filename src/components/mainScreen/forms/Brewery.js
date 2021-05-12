@@ -9,11 +9,15 @@ function Brewery(props) {
     props.onHandleBreweryEditClick();
   };
 
+  const deleteBreweryButton = () => {
+    props.onClickingDeleteBrewery(props.id)
+  }
+
   return (
     <React.Fragment>
       <h4 onClick={() => props.whenBreweryClicked(props.id)}>{props.name}</h4>
       <button onClick={editBreweryButton}>Edit brewery</button>
-      <button>Remove brewery</button>
+      <button onClick={deleteBreweryButton}>Remove brewery</button>
       <button onClick={props.onAddNewBeer}>Add new beer</button>
       {/* maybe try to map through beers where breweryId === brewery.id */}
       {Object.values(props.beerList).map((beer) =>

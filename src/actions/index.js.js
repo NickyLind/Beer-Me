@@ -63,6 +63,11 @@ export const addBrewery = (brewery) => {
   }
 };
 
+export const deleteBrewery = (id) => ({
+  type: c.DELETE_BREWERY,
+  id
+});
+
 export const selectedBrewery = (id) => ({
   type: c.SELECT_BREWERY,
   id

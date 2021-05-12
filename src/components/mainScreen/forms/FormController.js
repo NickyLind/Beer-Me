@@ -61,6 +61,14 @@ function FormController(props) {
     }
   };
 
+  const handleDeletingBrewery = (id) => {
+    const { dispatch } = props;
+    const action = a.deleteBrewery(id);
+    dispatch(action);
+    const action2 = a.unselectBrewery();
+    dispatch(action2);
+  };
+
   //* BEER COMPONENTS LOGIC ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   const toggleNewBeerForm = () => {
@@ -110,7 +118,7 @@ function FormController(props) {
     dispatch(action2);
   };
 
-  //* RETURN LOGIC FOR DISPLAYING COMPONENTS ~~~~~~~~~~~~~~~~~
+  //* RETURN LOGIC FOR DISPLAYING BEER COMPONENTS ~~~~~~~~~~~~
 
   if (props.newBeerFormVisible) {
     return (
@@ -126,6 +134,9 @@ function FormController(props) {
         onEditBeer={handleEditingBeerInList}
       />
     )
+
+    //* RETURN LOGIC FOR DISPLAYING BREWERY COMPONENTS ~~~~~~~
+
   } else if (props.newBreweryFormVisible) {
     return (
       <NewBreweryForm
@@ -166,6 +177,7 @@ function FormController(props) {
         onHandleBeerEditClick={handleBeerEditClick}
         onHandleBreweryEditClick={handleBreweryEditClick}
         onClickingDeleteBeer={handleDeletingBeer}
+        onClickingDeleteBrewery={handleDeletingBrewery}
       />
     )
   }
