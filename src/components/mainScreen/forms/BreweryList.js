@@ -1,5 +1,4 @@
 import React from 'react';
-import Beer from "./Beer";
 import Brewery from "./Brewery";
 
 function BreweryList(props) {
@@ -26,21 +25,13 @@ function BreweryList(props) {
             description={brewery.description}
             id={brewery.id}
             key={brewery.id}
+            onAddNewBeer={props.onAddNewBeer}
+            beerList={props.beerList}
           />
         ))
         }
-        {Object.values(props.beerList).map((beer) =>
-          <Beer
-            name={beer.name}
-            style={beer.style}
-            abv={beer.abv}
-            description={beer.description}
-            id={beer.id}
-            key={beer.id}
-          />
-        )}
       </div>
-      <button onClick={props.onAddNewBeer}>Add new beer</button>
+
       <button onClick={props.onAddNewBrewery}>add new brewery</button>
       <hr />
     </React.Fragment>
