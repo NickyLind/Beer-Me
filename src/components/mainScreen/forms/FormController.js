@@ -25,6 +25,12 @@ function FormController(props) {
     dispatch(action);
   };
 
+  const unselectBrewery = () => {
+    const { dispatch } = props
+    const action = a.unselectBrewery();
+    dispatch(action);
+  }
+
   const handleAddingNewBeerToList = (newBeer) => {
     const { dispatch } = props;
     const action = a.addBeer(newBeer);
@@ -59,6 +65,7 @@ function FormController(props) {
     return (
       <BreweryDetail
         brewery={props.selectedBrewery}
+        onUnselectBrewery={unselectBrewery}
       />
     )
     // } else if () {

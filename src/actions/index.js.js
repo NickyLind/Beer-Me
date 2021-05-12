@@ -61,4 +61,8 @@ export const addBrewery = (brewery) => {
 export const selectedBrewery = (id) => ({
   type: c.SELECT_BREWERY,
   id
-})
+});
+
+export const unselectBrewery = () => ({
+  type: c.UNSELECT_BREWERY
+});

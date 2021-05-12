@@ -5,6 +5,8 @@ export default (state = null, action) => {
   switch (action.type) {
     case c.SELECT_BREWERY:
       return id;
+    case c.UNSELECT_BREWERY:
+      return state = null;
     default:
       return state;
   }
