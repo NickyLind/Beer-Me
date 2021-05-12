@@ -16,17 +16,27 @@ function FormController(props) {
     const { dispatch } = props
     const action = a.toggleNewBeerForm();
     dispatch(action);
-  }
+  };
 
   const toggleNewBreweryForm = () => {
     const { dispatch } = props
     const action = a.toggleNewBreweryForm();
     dispatch(action);
+  };
+
+  const handleAddingNewBeerToList = (newBeer) => {
+    const { dispatch } = this.props;
+    const action = a.addBeer(newBeer);
+    dispatch(action);
+
   }
 
   if (props.newBeerFormVisible) {
     return (
-      <NewBeerForm onAddNewBeer={toggleNewBeerForm} />
+      <NewBeerForm
+        onAddNewBeer={toggleNewBeerForm}
+        onNewBeerCreation={handleAddingNewBeerToList}
+      />
     )
     // } else if () {
     //   return (
@@ -59,6 +69,7 @@ const mapStateToProps = state => {
   return {
     newBeerFormVisible: state.newBeerFormVisible,
     newBreweryFormVisible: state.newBreweryFormVisible,
+    masterBeerList: state.masterBeerList,
   }
 };
 

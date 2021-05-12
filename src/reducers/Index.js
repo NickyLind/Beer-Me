@@ -7,6 +7,7 @@ import selectorMainToggleReducer from "./selector-main-toggle-reducer";
 import loginMainToggleReducer from "./login-main-toggle-reducer";
 import formsMainToggleReducer from "./forms-main-toggle-reducer"
 import { combineReducers } from "redux";
+import beerListReducer from "./beer-list-reducer";
 
 const rootReducer = combineReducers({
   sidebarVisible: sidebarVisibleReducer,
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   displaySelectorOnMain: selectorMainToggleReducer,
   displayLoginOnMain: loginMainToggleReducer,
   displayFormsOnMain: formsMainToggleReducer,
+  masterBeerList: beerListReducer,
 });
 
 export default rootReducer;

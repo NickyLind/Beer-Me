@@ -31,3 +31,15 @@ export const displayLoginOnMain = () => ({
 export const displayFormsOnMain = () => ({
   type: c.DISPLAY_FORMS_ON_MAIN
 });
+
+export const addBeer = (beer) => {
+  const { name, style, ABV, description, id } = beer;
+  return {
+    type: c.ADD_BEER,
+    name,
+    style,
+    ABV,
+    description,
+    id,
+  }
+}
