@@ -3,7 +3,7 @@ import SelectorController from "./selector/SelectorController";
 import FormController from "./forms/FormController";
 import LogInController from "./login/LogInController";
 import { connect } from "react-redux";
-import * as a from "./../../actions";
+import * as a from "../../actions/index.js";
 
 function MainScreenController(props) {
 

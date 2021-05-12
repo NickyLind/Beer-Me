@@ -2,7 +2,7 @@ import React from 'react';
 import LogIn from "./LogIn";
 import LogInConfirm from "./LogInConfirm";
 import { connect } from "react-redux";
-import * as a from "./../../../actions";
+import * as a from "../../../actions/index.js";
 
 function LogInController(props) {
 

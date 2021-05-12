@@ -6,7 +6,7 @@ import EditBreweryForm from "./EditBreweryForm";
 import BreweryList from "./BreweryList";
 import Confirm from "./Confirm";
 import { connect } from "react-redux";
-import * as a from "../../../actions";
+import * as a from "../../../actions/index.js";
 
 function FormController(props) {
 

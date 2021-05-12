@@ -2,7 +2,7 @@ import React from 'react';
 import Detail from "./Detail";
 import Selector from "./Selector";
 import { connect } from "react-redux";
-import * as a from "../../../actions";
+import * as a from "../../../actions/index.js";
 
 function SelectorController(props) {
 

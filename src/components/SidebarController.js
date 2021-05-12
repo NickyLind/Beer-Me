@@ -1,7 +1,7 @@
 import React from 'react';
 import Sidebar from "./sidebar/Sidebar";
 import MainScreenController from "./mainScreen/MainScreenController";
-import * as a from "../actions";
+import * as a from "../actions/index.js";
 import { connect } from "react-redux";
 
 function SidebarController(props) {
