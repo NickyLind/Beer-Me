@@ -13,11 +13,8 @@ function FormController(props) {
 
   //* handle logic for switching between ReusableBeer, ReusableBrewery, BreweryList, Confirm components
   // ! state: beerEditing, breweryEditing, selectedBeer, selectedBrewery, beerFormVisibleOnPage, breweryFormVisibleOnPage, masterBreweryList, CUConfirm
-  const toggleNewBeerForm = () => {
-    const { dispatch } = props
-    const action = a.toggleNewBeerForm();
-    dispatch(action);
-  };
+
+  // * BREWERY COMPONENTS LOGIC ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   const toggleNewBreweryForm = () => {
     const { dispatch } = props
@@ -29,21 +26,30 @@ function FormController(props) {
     const { dispatch } = props
     const action = a.unselectBrewery();
     dispatch(action);
-  }
-
-  const handleAddingNewBeerToList = (newBeer) => {
-    const { dispatch } = props;
-    const action = a.addBeer(newBeer);
-    dispatch(action);
-    const action2 = a.toggleNewBeerForm();
-    dispatch(action2);
   };
+
 
   const handleAddingNewBreweryToList = (newBrewery) => {
     const { dispatch } = props;
     const action = a.addBrewery(newBrewery);
     dispatch(action);
     const action2 = a.toggleNewBreweryForm();
+    dispatch(action2);
+  };
+
+  //* BEER COMPONENTS LOGIC ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  const toggleNewBeerForm = () => {
+    const { dispatch } = props
+    const action = a.toggleNewBeerForm();
+    dispatch(action);
+  };
+
+  const handleAddingNewBeerToList = (newBeer) => {
+    const { dispatch } = props;
+    const action = a.addBeer(newBeer);
+    dispatch(action);
+    const action2 = a.toggleNewBeerForm();
     dispatch(action2);
   };
 
@@ -59,7 +65,7 @@ function FormController(props) {
     const { dispatch } = props;
     const action = a.selectedBeer(selectedBeer)
     dispatch(action);
-  }
+  };
 
   const handleBeerEditClick = () => {
     const { dispatch } = props;
@@ -77,8 +83,17 @@ function FormController(props) {
       const action = a.toggleBeerEdit();
       dispatch(action);
     }
-  }
-  // ! we aren't using a BeerDetail so this will have to work differently
+  };
+
+  const handleDeletingBeer = (id) => {
+    const { dispatch } = props;
+    const action = a.deleteBeer(id);
+    dispatch(action);
+    const action2 = a.unselectBeer();
+    dispatch(action2);
+  };
+
+  //* RETURN LOGIC FOR DISPLAYING COMPONENTS ~~~~~~~~~~~~~~~~~
 
   if (props.newBeerFormVisible) {
     return (
@@ -129,6 +144,7 @@ function FormController(props) {
         onBrewerySelection={handleChangingSelectedBrewery}
         onBeerSelection={handleChangingSelectedBeer}
         onHandleBeerEditClick={handleBeerEditClick}
+        onClickingDeleteBeer={handleDeletingBeer}
       />
     )
   }

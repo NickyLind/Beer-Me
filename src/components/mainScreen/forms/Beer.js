@@ -8,6 +8,10 @@ function Beer(props) {
     props.onHandleBeerEditClick();
   }
 
+  const deleteBeerButton = () => {
+    props.onClickingDeleteBeer(props.id);
+  }
+
   return (
     <React.Fragment>
       <h4>{props.name}</h4>
@@ -17,7 +21,7 @@ function Beer(props) {
       <p>{props.id}</p>
       <p>{props.breweryId}</p>
       <button onClick={editBeerButton}>Edit Beer</button>
-      <button>Remove Beer</button>
+      <button onClick={deleteBeerButton}>Remove Beer</button>
     </React.Fragment>
   );
 };

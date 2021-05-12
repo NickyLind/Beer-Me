@@ -47,6 +47,11 @@ export const addBeer = (beer) => {
   }
 };
 
+export const deleteBeer = (id) => ({
+  type: c.DELETE_BEER,
+  id
+});
+
 export const addBrewery = (brewery) => {
   const { name, location, description, id } = brewery;
   return {

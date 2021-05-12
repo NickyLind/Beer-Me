@@ -29,6 +29,7 @@ function BreweryList(props) {
             onAddNewBeer={props.onAddNewBeer}
             beerList={props.beerList}
             onHandleBeerEditClick={props.onHandleBeerEditClick}
+            onClickingDeleteBeer={props.onClickingDeleteBeer}
           />
         ))
         }

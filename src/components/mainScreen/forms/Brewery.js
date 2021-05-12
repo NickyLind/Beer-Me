@@ -21,6 +21,7 @@ function Brewery(props) {
           breweryId={props.id}
           onHandleBeerEditClick={props.onHandleBeerEditClick}
           whenBeerClicked={props.whenBeerClicked}
+          onClickingDeleteBeer={props.onClickingDeleteBeer}
         />
       )}
     </React.Fragment>
