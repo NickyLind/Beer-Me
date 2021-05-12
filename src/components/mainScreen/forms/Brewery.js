@@ -4,12 +4,18 @@ import Beer from "./Beer";
 
 function Brewery(props) {
 
+  const editBreweryButton = () => {
+    props.whenBreweryClicked(props.id);
+    props.onHandleBreweryEditClick();
+  };
+
   return (
     <React.Fragment>
       <h4 onClick={() => props.whenBreweryClicked(props.id)}>{props.name}</h4>
-      <button>Edit brewery</button>
+      <button onClick={editBreweryButton}>Edit brewery</button>
       <button>Remove brewery</button>
       <button onClick={props.onAddNewBeer}>Add new beer</button>
+      {/* maybe try to map through beers where breweryId === brewery.id */}
       {Object.values(props.beerList).map((beer) =>
         <Beer
           name={beer.name}
