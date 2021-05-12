@@ -6,16 +6,28 @@ function ReusableBreweryForm(props) {
     <React.Fragment>
       <h3><em>Reusable Brewery Form</em></h3>
       <hr />
-      <form>
-        <input>
-        </input>
-        <input>
-        </input>
-        <input>
-        </input>
+      <form onSubmit={props.formSubmissionHandler}>
+        <input
+          type="text"
+          name="name"
+          placeholder="Brewery Name"
+          required
+        />
+        <input
+          type="text"
+          name="location"
+          placeholder="Brewery Location"
+          required
+        />
+        <input
+          type="text"
+          name="description"
+          placeholder="Brewery Description"
+          required
+        />
+        <button>submit</button>
       </form>
       <hr />
-      <button>submit</button>
       <button onClick={props.onAddNewBrewery}>Go back</button>
     </React.Fragment>
   )

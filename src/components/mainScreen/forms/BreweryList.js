@@ -1,11 +1,12 @@
 import React from 'react';
 import Beer from "./Beer";
+import Brewery from "./Brewery";
 
 function BreweryList(props) {
 
   const scrollBox = {
     height: "100px",
-    width: "200px",
+    width: "400px",
     border: "1px solid #ccc",
     font: "16px/26px Georgia, Garamond, Serif",
     overflow: "auto"
@@ -17,6 +18,16 @@ function BreweryList(props) {
       <h3><em>Brewery List Component</em></h3>
       <hr />
       <div style={scrollBox}>
+        {Object.values(props.breweryList).map((brewery =>
+          <Brewery
+            name={brewery.name}
+            location={brewery.location}
+            description={brewery.description}
+            id={brewery.id}
+            key={brewery.id}
+          />
+        ))
+        }
         {Object.values(props.beerList).map((beer) =>
           <Beer
             name={beer.name}

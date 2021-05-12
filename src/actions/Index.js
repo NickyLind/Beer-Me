@@ -45,4 +45,15 @@ export const addBeer = (beer) => {
     description,
     id,
   }
+};
+
+export const addBrewery = (brewery) => {
+  const { name, location, description, id } = brewery;
+  return {
+    type: c.ADD_BREWERY,
+    name,
+    location,
+    description,
+    id,
+  }
 }

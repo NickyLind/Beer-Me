@@ -30,8 +30,15 @@ function FormController(props) {
     dispatch(action);
     const action2 = a.toggleNewBeerForm();
     dispatch(action2);
+  };
 
-  }
+  const handleAddingNewBreweryToList = (newBrewery) => {
+    const { dispatch } = props;
+    const action = a.addBrewery(newBrewery);
+    dispatch(action);
+    const action2 = a.toggleNewBreweryForm();
+    dispatch(action2);
+  };
 
   if (props.newBeerFormVisible) {
     return (
@@ -47,7 +54,10 @@ function FormController(props) {
     //   )
   } else if (props.newBreweryFormVisible) {
     return (
-      <NewBreweryForm onAddNewBrewery={toggleNewBreweryForm} />
+      <NewBreweryForm
+        onAddNewBrewery={toggleNewBreweryForm}
+        onNewBreweryCreation={handleAddingNewBreweryToList}
+      />
     )
     // } else if (props.newBreweryFormVisible) {
     //   return (
@@ -66,6 +76,7 @@ function FormController(props) {
         onAddNewBeer={toggleNewBeerForm}
         onAddNewBrewery={toggleNewBreweryForm}
         beerList={props.masterBeerList}
+        breweryList={props.masterBreweryList}
       />
     )
   }
@@ -76,6 +87,7 @@ const mapStateToProps = state => {
     newBeerFormVisible: state.newBeerFormVisible,
     newBreweryFormVisible: state.newBreweryFormVisible,
     masterBeerList: state.masterBeerList,
+    masterBreweryList: state.masterBreweryList,
   }
 };
 
