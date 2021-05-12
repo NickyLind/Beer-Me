@@ -1,12 +1,26 @@
 import React from "react";
 import ReusableBeerForm from "./ReusableBeerForm";
 
-function EditBeerForm() {
+function EditBeerForm(props) {
+  const { beer } = props;
 
+  function HandleEditBeerFormSubmission(event) {
+    event.preventDefault();
+    props.onEditBeer({
+      name: event.target.name.value,
+      style: event.target.style.value,
+      abv: event.target.abv.value,
+      description: event.target.description.value,
+      id: beer.id,
+      breweryId: beer.breweryId
+    });
+  }
   return (
     <React.Fragment>
-      <h3>~Edit~</h3>
-      <ReusableBeerForm />
+      <h3>~Edit Beer Form~</h3>
+      <ReusableBeerForm
+        formSubmissionHandler={HandleEditBeerFormSubmission}
+      />
     </React.Fragment>
   );
 };

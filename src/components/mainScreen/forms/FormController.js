@@ -52,7 +52,33 @@ function FormController(props) {
     const { dispatch } = props;
     const action = a.selectedBrewery(selectedBrewery)
     dispatch(action);
+  };
+
+  const handleChangingSelectedBeer = (id) => {
+    const selectedBeer = props.masterBeerList[id];
+    const { dispatch } = props;
+    const action = a.selectedBeer(selectedBeer)
+    dispatch(action);
   }
+
+  const handleBeerEditClick = () => {
+    const { dispatch } = props;
+    const action = a.toggleBeerEdit();
+    dispatch(action)
+  };
+
+  const handleEditingBeerInList = (beerToEdit) => {
+    const { dispatch } = props;
+    const action = a.addBeer(beerToEdit);
+    dispatch(action);
+    const action2 = a.unselectBeer();
+    dispatch(action2);
+    if (props.beerEditing) {
+      const action = a.toggleBeerEdit();
+      dispatch(action);
+    }
+  }
+  // ! we aren't using a BeerDetail so this will have to work differently
 
   if (props.newBeerFormVisible) {
     return (
@@ -68,11 +94,13 @@ function FormController(props) {
         onUnselectBrewery={unselectBrewery}
       />
     )
-    // } else if () {
-    //   return (
-    //     <EditBeerForm />
-    //       {/* beerEditing = true */ }
-    //   )
+  } else if (props.beerEditing) {
+    return (
+      <EditBeerForm
+        beer={props.selectedBeer}
+        onEditBeer={handleEditingBeerInList}
+      />
+    )
   } else if (props.newBreweryFormVisible) {
     return (
       <NewBreweryForm
@@ -99,6 +127,8 @@ function FormController(props) {
         beerList={props.masterBeerList}
         breweryList={props.masterBreweryList}
         onBrewerySelection={handleChangingSelectedBrewery}
+        onBeerSelection={handleChangingSelectedBeer}
+        onHandleBeerEditClick={handleBeerEditClick}
       />
     )
   }
@@ -111,6 +141,9 @@ const mapStateToProps = state => {
     masterBeerList: state.masterBeerList,
     masterBreweryList: state.masterBreweryList,
     selectedBrewery: state.selectedBrewery,
+    selectedBeer: state.selectedBeer,
+    beerEditing: state.beerEditing,
+    breweryEditing: state.breweryEditing,
   }
 };
 

@@ -66,3 +66,20 @@ export const selectedBrewery = (id) => ({
 export const unselectBrewery = () => ({
   type: c.UNSELECT_BREWERY
 });
+
+export const selectedBeer = (id) => ({
+  type: c.SELECT_BEER,
+  id
+});
+
+export const unselectBeer = () => ({
+  type: c.UNSELECT_BEER
+});
+
+export const toggleBreweryEdit = () => ({
+  type: c.TOGGLE_BREWERY_EDIT
+});
+
+export const toggleBeerEdit = () => ({
+  type: c.TOGGLE_BEER_EDIT
+});

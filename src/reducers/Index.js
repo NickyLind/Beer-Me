@@ -10,6 +10,9 @@ import { combineReducers } from "redux";
 import beerListReducer from "./beer-list-reducer";
 import breweryListReducer from "./brewery-list-reducer";
 import selectedBreweryReducer from "./selected-brewery-reducer";
+import beerEditReducer from "./beer-edit-reducer";
+import breweryEditReducer from "./brewery-edit-reducer";
+import selectedBeerReducer from "./selected-beer-reducer";
 
 const rootReducer = combineReducers({
   sidebarVisible: sidebarVisibleReducer,
@@ -22,7 +25,10 @@ const rootReducer = combineReducers({
   displayFormsOnMain: formsMainToggleReducer,
   masterBeerList: beerListReducer,
   masterBreweryList: breweryListReducer,
-  selectedBrewery: selectedBreweryReducer
+  selectedBrewery: selectedBreweryReducer,
+  selectedBeer: selectedBeerReducer,
+  beerEditing: beerEditReducer,
+  breweryEditing: breweryEditReducer
 });
 
 export default rootReducer;
