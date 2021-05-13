@@ -20,6 +20,7 @@ function EditBeerForm(props) {
       <h3>~Edit Beer Form~</h3>
       <ReusableBeerForm
         formSubmissionHandler={HandleEditBeerFormSubmission}
+        onAddNewBeer={props.onClickBeerEdit}
       />
     </React.Fragment>
   );

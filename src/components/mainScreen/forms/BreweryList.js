@@ -4,7 +4,7 @@ import Brewery from "./Brewery";
 function BreweryList(props) {
 
   const scrollBox = {
-    height: "100px",
+    height: "350px",
     width: "400px",
     border: "1px solid #ccc",
     font: "16px/26px Georgia, Garamond, Serif",

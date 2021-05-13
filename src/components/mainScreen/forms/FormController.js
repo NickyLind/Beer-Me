@@ -49,6 +49,14 @@ function FormController(props) {
     dispatch(action)
   };
 
+  const handleEditGoBackButton = () => {
+    const { dispatch } = props;
+    const action = a.toggleBreweryEdit();
+    dispatch(action);
+    const action2 = a.unselectBrewery();
+    dispatch(action2);
+  }
+
   const handleEditingBreweryInList = (breweryToEdit) => {
     const { dispatch } = props;
     const action = a.addBrewery(breweryToEdit);
@@ -134,6 +142,7 @@ function FormController(props) {
       <EditBeerForm
         beer={props.selectedBeer}
         onEditBeer={handleEditingBeerInList}
+        onClickBeerEdit={handleBeerEditClick}
       />
     )
 
@@ -151,6 +160,7 @@ function FormController(props) {
       <EditBreweryForm
         brewery={props.selectedBrewery}
         onEditBrewery={handleEditingBreweryInList}
+        onClickBreweryEdit={handleEditGoBackButton}
       />
     )
   } else if (props.selectedBrewery != null) {

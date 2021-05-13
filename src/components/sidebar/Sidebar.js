@@ -26,7 +26,7 @@ function Sidebar(props) {
       <h3><em>SideBar</em></h3>
       <hr />
       <button onClick={handleClickLogin} >{props.loginText}</button><br />
-      <button onClick={handleClickYourBreweries}>Your Breweries</button><br />
+      <button onClick={handleClickYourBreweries}>{props.buttonText}</button><br />
       <hr />
     </React.Fragment>
   );

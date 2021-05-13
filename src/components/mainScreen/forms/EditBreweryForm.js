@@ -19,6 +19,7 @@ function EditBreweryForm(props) {
       <h3>~Edit Brewery Form~</h3>
       <ReusableBreweryForm
         formSubmissionHandler={HandleEditBreweryFormSubmission}
+        onAddNewBrewery={props.onClickBreweryEdit}
       />
     </React.Fragment>
   );
