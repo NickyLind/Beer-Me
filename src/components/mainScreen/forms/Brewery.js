@@ -11,15 +11,23 @@ function Brewery(props) {
 
   const deleteBreweryButton = () => {
     props.onClickingDeleteBrewery(props.id)
+  };
+
+  const addNewBeerButton = () => {
+    props.onAddNewBeer();
+    props.whenBreweryClicked(props.id);
   }
+
+  //* i'm thinking a function here that passes props.id into props.onAddNewBeer and sets it equal to breweryId
+
 
   return (
     <React.Fragment>
       <h4 onClick={() => props.whenBreweryClicked(props.id)}>{props.name}</h4>
       <button onClick={editBreweryButton}>Edit brewery</button>
       <button onClick={deleteBreweryButton}>Remove brewery</button>
-      <button onClick={props.onAddNewBeer}>Add new beer</button>
-      {/* maybe try to map through beers where breweryId === brewery.id */}
+      <button onClick={addNewBeerButton}>Add new beer</button>
+      {/* maybe try to map through beers where breweryId === props.id */}
       {Object.values(props.beerList).map((beer) =>
         <Beer
           name={beer.name}
@@ -28,12 +36,12 @@ function Brewery(props) {
           description={beer.description}
           id={beer.id}
           key={beer.id}
-          breweryId={props.id}
+          breweryId={beer.breweryId}
           onHandleBeerEditClick={props.onHandleBeerEditClick}
           whenBeerClicked={props.whenBeerClicked}
           onClickingDeleteBeer={props.onClickingDeleteBeer}
         />
-      )}
+      )};
     </React.Fragment>
   )
 };

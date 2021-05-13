@@ -36,7 +36,7 @@ export const displayFormsOnMain = () => ({
 // displays the forms controller on the main view 
 
 export const addBeer = (beer) => {
-  const { name, style, abv, description, id } = beer;
+  const { name, style, abv, description, id, breweryId } = beer;
   return {
     type: c.ADD_BEER,
     name,
@@ -44,6 +44,7 @@ export const addBeer = (beer) => {
     abv,
     description,
     id,
+    breweryId,
   }
 };
 

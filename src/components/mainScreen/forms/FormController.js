@@ -83,6 +83,8 @@ function FormController(props) {
     dispatch(action);
     const action2 = a.toggleNewBeerForm();
     dispatch(action2);
+    const action3 = a.unselectBrewery();
+    dispatch(action3);
   };
 
   const handleChangingSelectedBeer = (id) => {

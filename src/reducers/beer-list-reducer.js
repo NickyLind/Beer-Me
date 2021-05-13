@@ -1,7 +1,7 @@
 import * as c from "../actions/ActionTypes";
 
 export default (state = {}, action) => {
-  const { name, style, abv, description, id } = action;
+  const { name, style, abv, description, id, breweryId } = action;
 
   switch (action.type) {
     case c.ADD_BEER:
@@ -12,6 +12,7 @@ export default (state = {}, action) => {
           abv,
           description,
           id,
+          breweryId,
         }
       });
     case c.DELETE_BEER:

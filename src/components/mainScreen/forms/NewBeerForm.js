@@ -2,6 +2,8 @@ import React from "react";
 import ReusableBeerForm from "./ReusableBeerForm";
 import { v4 } from "uuid";
 import PropTypes from "prop-types";
+import { selectedBrewery } from "../../../actions/index.js";
+import { connect } from "react-redux"
 
 function NewBeerForm(props) {
 
@@ -14,6 +16,7 @@ function NewBeerForm(props) {
         abv: event.target.abv.value,
         description: event.target.description.value,
         id: v4(),
+        breweryId: props.selectedBrewery.id
       }
     );
   }
@@ -32,5 +35,13 @@ function NewBeerForm(props) {
 NewBeerForm.propTypes = {
   onNewBeerCreation: PropTypes.func
 };
+
+const mapStateToProps = (state) => {
+  return {
+    selectedBrewery: state.selectedBrewery,
+  }
+};
+
+NewBeerForm = connect(mapStateToProps)(NewBeerForm)
 
 export default NewBeerForm;
