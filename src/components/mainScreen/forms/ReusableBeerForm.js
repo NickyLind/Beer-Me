@@ -35,11 +35,6 @@ function ReusableBeerForm(props) {
           placeholder="beverage description"
           required
         />
-        {/* <input
-          type="hidden"
-          name="breweryId"
-          value={props.selectedBrewery.id}
-        /> */}
         <button type="submit">submit</button>
       </form>
       <hr />

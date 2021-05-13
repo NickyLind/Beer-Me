@@ -28,7 +28,7 @@ function Brewery(props) {
       <button onClick={deleteBreweryButton}>Remove brewery</button>
       <button onClick={addNewBeerButton}>Add new beer</button>
       {/* maybe try to map through beers where breweryId === props.id */}
-      {Object.values(props.beerList).map((beer) =>
+      {Object.values(props.beerList).filter(beer => beer.breweryId === props.id).map((beer) =>
         <Beer
           name={beer.name}
           style={beer.style}
