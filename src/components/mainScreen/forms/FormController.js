@@ -13,11 +13,8 @@ function FormController(props) {
 
   //* handle logic for switching between ReusableBeer, ReusableBrewery, BreweryList, Confirm components
   // ! state: beerEditing, breweryEditing, selectedBeer, selectedBrewery, beerFormVisibleOnPage, breweryFormVisibleOnPage, masterBreweryList, CUConfirm
-  const toggleNewBeerForm = () => {
-    const { dispatch } = props
-    const action = a.toggleNewBeerForm();
-    dispatch(action);
-  };
+
+  // * BREWERY COMPONENTS LOGIC ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   const toggleNewBreweryForm = () => {
     const { dispatch } = props
@@ -25,18 +22,17 @@ function FormController(props) {
     dispatch(action);
   };
 
+  const handleChangingSelectedBrewery = (id) => {
+    const selectedBrewery = props.masterBreweryList[id];
+    const { dispatch } = props;
+    const action = a.selectedBrewery(selectedBrewery)
+    dispatch(action);
+  };
+
   const unselectBrewery = () => {
     const { dispatch } = props
     const action = a.unselectBrewery();
     dispatch(action);
-  }
-
-  const handleAddingNewBeerToList = (newBeer) => {
-    const { dispatch } = props;
-    const action = a.addBeer(newBeer);
-    dispatch(action);
-    const action2 = a.toggleNewBeerForm();
-    dispatch(action2);
   };
 
   const handleAddingNewBreweryToList = (newBrewery) => {
@@ -47,18 +43,114 @@ function FormController(props) {
     dispatch(action2);
   };
 
-  const handleChangingSelectedBrewery = (id) => {
-    const selectedBrewery = props.masterBreweryList[id];
+  const handleBreweryEditClick = () => {
     const { dispatch } = props;
-    const action = a.selectedBrewery(selectedBrewery)
+    const action = a.toggleBreweryEdit();
+    dispatch(action)
+  };
+
+  const handleEditingBreweryInList = (breweryToEdit) => {
+    const { dispatch } = props;
+    const action = a.addBrewery(breweryToEdit);
     dispatch(action);
-  }
+    const action2 = a.unselectBrewery();
+    dispatch(action2);
+    if (props.breweryEditing) {
+      const action = a.toggleBreweryEdit();
+      dispatch(action);
+    }
+  };
+
+  const handleDeletingBrewery = (id) => {
+    const { dispatch } = props;
+    const action = a.deleteBrewery(id);
+    dispatch(action);
+    const action2 = a.unselectBrewery();
+    dispatch(action2);
+  };
+
+  //* BEER COMPONENTS LOGIC ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  const toggleNewBeerForm = () => {
+    const { dispatch } = props
+    const action = a.toggleNewBeerForm();
+    dispatch(action);
+  };
+
+  const handleAddingNewBeerToList = (newBeer) => {
+    const { dispatch } = props;
+    const action = a.addBeer(newBeer);
+    dispatch(action);
+    const action2 = a.toggleNewBeerForm();
+    dispatch(action2);
+    const action3 = a.unselectBrewery();
+    dispatch(action3);
+  };
+
+  const handleChangingSelectedBeer = (id) => {
+    const selectedBeer = props.masterBeerList[id];
+    const { dispatch } = props;
+    const action = a.selectedBeer(selectedBeer)
+    dispatch(action);
+  };
+
+  const handleBeerEditClick = () => {
+    const { dispatch } = props;
+    const action = a.toggleBeerEdit();
+    dispatch(action)
+  };
+
+  const handleEditingBeerInList = (beerToEdit) => {
+    const { dispatch } = props;
+    const action = a.addBeer(beerToEdit);
+    dispatch(action);
+    const action2 = a.unselectBeer();
+    dispatch(action2);
+    if (props.beerEditing) {
+      const action = a.toggleBeerEdit();
+      dispatch(action);
+    }
+  };
+
+  const handleDeletingBeer = (id) => {
+    const { dispatch } = props;
+    const action = a.deleteBeer(id);
+    dispatch(action);
+    const action2 = a.unselectBeer();
+    dispatch(action2);
+  };
+
+  //* RETURN LOGIC FOR DISPLAYING BEER COMPONENTS ~~~~~~~~~~~~
 
   if (props.newBeerFormVisible) {
     return (
       <NewBeerForm
         onAddNewBeer={toggleNewBeerForm}
         onNewBeerCreation={handleAddingNewBeerToList}
+      />
+    )
+  } else if (props.beerEditing) {
+    return (
+      <EditBeerForm
+        beer={props.selectedBeer}
+        onEditBeer={handleEditingBeerInList}
+      />
+    )
+
+    //* RETURN LOGIC FOR DISPLAYING BREWERY COMPONENTS ~~~~~~~
+
+  } else if (props.newBreweryFormVisible) {
+    return (
+      <NewBreweryForm
+        onAddNewBrewery={toggleNewBreweryForm}
+        onNewBreweryCreation={handleAddingNewBreweryToList}
+      />
+    )
+  } else if (props.breweryEditing) {
+    return (
+      <EditBreweryForm
+        brewery={props.selectedBrewery}
+        onEditBrewery={handleEditingBreweryInList}
       />
     )
   } else if (props.selectedBrewery != null) {
@@ -68,22 +160,6 @@ function FormController(props) {
         onUnselectBrewery={unselectBrewery}
       />
     )
-    // } else if () {
-    //   return (
-    //     <EditBeerForm />
-    //       {/* beerEditing = true */ }
-    //   )
-  } else if (props.newBreweryFormVisible) {
-    return (
-      <NewBreweryForm
-        onAddNewBrewery={toggleNewBreweryForm}
-        onNewBreweryCreation={handleAddingNewBreweryToList}
-      />
-    )
-    // } else if (props.newBreweryFormVisible) {
-    //   return (
-    //     <EditBreweryForm  />
-    //   )
     // } else if () {
     //   return (
     //     <Confirm />
@@ -99,6 +175,11 @@ function FormController(props) {
         beerList={props.masterBeerList}
         breweryList={props.masterBreweryList}
         onBrewerySelection={handleChangingSelectedBrewery}
+        onBeerSelection={handleChangingSelectedBeer}
+        onHandleBeerEditClick={handleBeerEditClick}
+        onHandleBreweryEditClick={handleBreweryEditClick}
+        onClickingDeleteBeer={handleDeletingBeer}
+        onClickingDeleteBrewery={handleDeletingBrewery}
       />
     )
   }
@@ -111,6 +192,9 @@ const mapStateToProps = state => {
     masterBeerList: state.masterBeerList,
     masterBreweryList: state.masterBreweryList,
     selectedBrewery: state.selectedBrewery,
+    selectedBeer: state.selectedBeer,
+    beerEditing: state.beerEditing,
+    breweryEditing: state.breweryEditing,
   }
 };
 

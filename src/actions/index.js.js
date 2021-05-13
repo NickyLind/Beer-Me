@@ -36,7 +36,7 @@ export const displayFormsOnMain = () => ({
 // displays the forms controller on the main view 
 
 export const addBeer = (beer) => {
-  const { name, style, abv, description, id } = beer;
+  const { name, style, abv, description, id, breweryId } = beer;
   return {
     type: c.ADD_BEER,
     name,
@@ -44,8 +44,14 @@ export const addBeer = (beer) => {
     abv,
     description,
     id,
+    breweryId,
   }
 };
+
+export const deleteBeer = (id) => ({
+  type: c.DELETE_BEER,
+  id
+});
 
 export const addBrewery = (brewery) => {
   const { name, location, description, id } = brewery;
@@ -58,6 +64,11 @@ export const addBrewery = (brewery) => {
   }
 };
 
+export const deleteBrewery = (id) => ({
+  type: c.DELETE_BREWERY,
+  id
+});
+
 export const selectedBrewery = (id) => ({
   type: c.SELECT_BREWERY,
   id
@@ -65,4 +76,21 @@ export const selectedBrewery = (id) => ({
 
 export const unselectBrewery = () => ({
   type: c.UNSELECT_BREWERY
+});
+
+export const selectedBeer = (id) => ({
+  type: c.SELECT_BEER,
+  id
+});
+
+export const unselectBeer = () => ({
+  type: c.UNSELECT_BEER
+});
+
+export const toggleBreweryEdit = () => ({
+  type: c.TOGGLE_BREWERY_EDIT
+});
+
+export const toggleBeerEdit = () => ({
+  type: c.TOGGLE_BEER_EDIT
 });

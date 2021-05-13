@@ -4,11 +4,28 @@ import Beer from "./Beer";
 
 function Brewery(props) {
 
+  const editBreweryButton = () => {
+    props.whenBreweryClicked(props.id);
+    props.onHandleBreweryEditClick();
+  };
+
+  const deleteBreweryButton = () => {
+    props.onClickingDeleteBrewery(props.id)
+  };
+
+  const addNewBeerButton = () => {
+    props.onAddNewBeer();
+    props.whenBreweryClicked(props.id);
+  }
+
   return (
     <React.Fragment>
       <h4 onClick={() => props.whenBreweryClicked(props.id)}>{props.name}</h4>
-      <button onClick={props.onAddNewBeer}>Add new beer</button>
-      {Object.values(props.beerList).map((beer) =>
+      <button onClick={editBreweryButton}>Edit brewery</button>
+      <button onClick={deleteBreweryButton}>Remove brewery</button>
+      <button onClick={addNewBeerButton}>Add new beer</button>
+
+      {Object.values(props.beerList).filter(beer => beer.breweryId === props.id).map((beer) =>
         <Beer
           name={beer.name}
           style={beer.style}
@@ -16,9 +33,12 @@ function Brewery(props) {
           description={beer.description}
           id={beer.id}
           key={beer.id}
-          breweryId={props.id}
+          breweryId={beer.breweryId}
+          onHandleBeerEditClick={props.onHandleBeerEditClick}
+          whenBeerClicked={props.whenBeerClicked}
+          onClickingDeleteBeer={props.onClickingDeleteBeer}
         />
-      )}
+      )};
     </React.Fragment>
   )
 };

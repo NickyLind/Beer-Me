@@ -20,6 +20,7 @@ function BreweryList(props) {
         {Object.values(props.breweryList).map((brewery =>
           <Brewery
             whenBreweryClicked={props.onBrewerySelection}
+            whenBeerClicked={props.onBeerSelection}
             name={brewery.name}
             location={brewery.location}
             description={brewery.description}
@@ -27,6 +28,10 @@ function BreweryList(props) {
             key={brewery.id}
             onAddNewBeer={props.onAddNewBeer}
             beerList={props.beerList}
+            onHandleBeerEditClick={props.onHandleBeerEditClick}
+            onClickingDeleteBeer={props.onClickingDeleteBeer}
+            onHandleBreweryEditClick={props.onHandleBreweryEditClick}
+            onClickingDeleteBrewery={props.onClickingDeleteBrewery}
           />
         ))
         }

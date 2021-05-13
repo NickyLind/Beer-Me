@@ -5,11 +5,6 @@ import { connect } from "react-redux"
 
 function ReusableBeerForm(props) {
 
-  // const handleBeerSubmission = () => {
-  //   props.formSubmissionHandler;
-  //   props.onAddNewBeer;
-  // }
-
   return (
     <React.Fragment>
       <h3><em>Reusable Beer Form</em></h3>
@@ -40,11 +35,6 @@ function ReusableBeerForm(props) {
           placeholder="beverage description"
           required
         />
-        {/* <input
-          type="hidden"
-          name="BreweryId"
-          value={ }
-        /> */}
         <button type="submit">submit</button>
       </form>
       <hr />
