@@ -1,20 +1,23 @@
 import React from "react";
 import ReusableBeerForm from "./ReusableBeerForm";
+import { useFirestore } from "react-redux-firebase";
+
 
 function EditBeerForm(props) {
   const { beer } = props;
+  const firestore = useFirestore();
+
 
   function HandleEditBeerFormSubmission(event) {
     event.preventDefault();
-    props.onEditBeer({
+    props.onEditBeer();
+    const propertiesToUpdate = {
       name: event.target.name.value,
       style: event.target.style.value,
       abv: event.target.abv.value,
       description: event.target.description.value,
-      id: beer.id,
-      breweryId: beer.breweryId,
-      addedToDatabase: beer.addedToDatabase,
-    });
+    }
+    return firestore.update({ collection: "beers", doc: beer.id }, propertiesToUpdate)
   }
   return (
     <React.Fragment>

@@ -65,22 +65,19 @@ function FormController(props) {
     dispatch(action2);
   }
 
-  // const handleEditingBreweryInList = (breweryToEdit) => {
-  //   const { dispatch } = props;
-  //   const action = a.addBrewery(breweryToEdit);
-  //   dispatch(action);
-  //   const action2 = a.unselectBrewery();
-  //   dispatch(action2);
-  //   if (props.breweryEditing) {
-  //     const action = a.toggleBreweryEdit();
-  //     dispatch(action);
-  //   }
-  // };
+  const handleEditingBreweryInList = () => {
+    const { dispatch } = props
+    const action2 = a.unselectBrewery();
+    dispatch(action2);
+    if (props.breweryEditing) {
+      const action = a.toggleBreweryEdit();
+      dispatch(action);
+    }
+  };
 
   const handleDeletingBrewery = (id) => {
     const { dispatch } = props;
-    const action = a.deleteBrewery(id);
-    dispatch(action);
+    props.firestore.delete({ collection: "breweries", doc: id });
     const action2 = a.unselectBrewery();
     dispatch(action2);
   };
@@ -123,22 +120,19 @@ function FormController(props) {
     dispatch(action)
   };
 
-  // const handleEditingBeerInList = (beerToEdit) => {
-  //   const { dispatch } = props;
-  //   const action = a.addBeer(beerToEdit);
-  //   dispatch(action);
-  //   const action2 = a.unselectBeer();
-  //   dispatch(action2);
-  //   if (props.beerEditing) {
-  //     const action = a.toggleBeerEdit();
-  //     dispatch(action);
-  //   }
-  // };
+  const handleEditingBeerInList = () => {
+    const { dispatch } = props;
+    const action2 = a.unselectBeer();
+    dispatch(action2);
+    if (props.beerEditing) {
+      const action = a.toggleBeerEdit();
+      dispatch(action);
+    }
+  };
 
   const handleDeletingBeer = (id) => {
     const { dispatch } = props;
-    const action = a.deleteBeer(id);
-    dispatch(action);
+    props.firestore.delete({ collection: "beers", doc: id });
     const action2 = a.unselectBeer();
     dispatch(action2);
   };
@@ -156,7 +150,7 @@ function FormController(props) {
     return (
       <EditBeerForm
         beer={props.selectedBeer}
-        // onEditBeer={handleEditingBeerInList}
+        onEditBeer={handleEditingBeerInList}
         onClickBeerEdit={handleBeerEditClick}
       />
     )
@@ -174,7 +168,7 @@ function FormController(props) {
     return (
       <EditBreweryForm
         brewery={props.selectedBrewery}
-        // onEditBrewery={handleEditingBreweryInList}
+        onEditBrewery={handleEditingBreweryInList}
         onClickBreweryEdit={handleEditGoBackButton}
       />
     )
