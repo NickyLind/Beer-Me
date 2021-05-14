@@ -18,7 +18,6 @@ function Beer(props) {
       <p>{props.style}</p>
       <p>{props.abv}</p>
       <p>{props.description}</p>
-      <p>{props.id}</p>
       <p>{props.breweryId}</p>
       <button onClick={editBeerButton}>Edit Beer</button>
       <button onClick={deleteBeerButton}>Remove Beer</button>

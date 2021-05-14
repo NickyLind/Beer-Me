@@ -102,10 +102,19 @@ function FormController(props) {
   };
 
   const handleChangingSelectedBeer = (id) => {
-    const selectedBeer = props.masterBeerList[id];
-    const { dispatch } = props;
-    const action = a.selectedBeer(selectedBeer)
-    dispatch(action);
+    props.firestore.get({ collection: "beers", doc: id }).then((beer) => {
+      const firestoreBeer = {
+        name: beer.get("name"),
+        style: beer.get("style"),
+        abv: beer.get("abv"),
+        description: beer.get("description"),
+        breweryId: beer.get("breweryId"),
+        addedToDatabase: beer.get("addedToDatabase")
+      }
+      const { dispatch } = props;
+      const action = a.selectedBeer(firestoreBeer)
+      dispatch(action);
+    })
   };
 
   const handleBeerEditClick = () => {
