@@ -13,6 +13,8 @@ import selectedBreweryReducer from "./selected-brewery-reducer";
 import beerEditReducer from "./beer-edit-reducer";
 import breweryEditReducer from "./brewery-edit-reducer";
 import selectedBeerReducer from "./selected-beer-reducer";
+import { firestoreReducer } from "redux-firestore";
+
 
 const rootReducer = combineReducers({
   sidebarVisible: sidebarVisibleReducer,
@@ -28,7 +30,8 @@ const rootReducer = combineReducers({
   selectedBrewery: selectedBreweryReducer,
   selectedBeer: selectedBeerReducer,
   beerEditing: beerEditReducer,
-  breweryEditing: breweryEditReducer
+  breweryEditing: breweryEditReducer,
+  firestore: firestoreReducer
 });
 
 export default rootReducer;

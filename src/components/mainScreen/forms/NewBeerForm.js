@@ -1,22 +1,26 @@
 import React from "react";
 import ReusableBeerForm from "./ReusableBeerForm";
-import { v4 } from "uuid";
 import PropTypes from "prop-types";
 import { selectedBrewery } from "../../../actions/index.js";
-import { connect } from "react-redux"
+import { connect } from "react-redux";
+import { useFirestore } from "react-redux-firebase";
+
 
 function NewBeerForm(props) {
 
-  function handleNewBeerFormSubmission(event) {
+  const firestore = useFirestore();
+
+  function addBeerToFirestore(event) {
     event.preventDefault();
-    props.onNewBeerCreation(
+    props.onNewBeerCreation();
+    return firestore.collection("beers").add(
       {
         name: event.target.name.value,
         style: event.target.style.value,
         abv: event.target.abv.value,
         description: event.target.description.value,
-        id: v4(),
-        breweryId: props.selectedBrewery.id
+        breweryId: props.selectedBrewery.id,
+        addedToDatabase: firestore.FieldValue.serverTimestamp()
       }
     );
   }
@@ -26,7 +30,7 @@ function NewBeerForm(props) {
       <h3>New Beer Form</h3>
       <ReusableBeerForm
         onAddNewBeer={props.onAddNewBeer}
-        formSubmissionHandler={handleNewBeerFormSubmission}
+        formSubmissionHandler={addBeerToFirestore}
       />
     </React.Fragment>
   );

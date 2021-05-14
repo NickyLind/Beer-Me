@@ -12,7 +12,8 @@ function EditBeerForm(props) {
       abv: event.target.abv.value,
       description: event.target.description.value,
       id: beer.id,
-      breweryId: beer.breweryId
+      breweryId: beer.breweryId,
+      addedToDatabase: beer.addedToDatabase,
     });
   }
   return (

@@ -35,12 +35,10 @@ function FormController(props) {
     dispatch(action);
   };
 
-  const handleAddingNewBreweryToList = (newBrewery) => {
+  const handleAddingNewBreweryToList = () => {
     const { dispatch } = props;
-    const action = a.addBrewery(newBrewery);
+    const action = a.toggleNewBreweryForm();
     dispatch(action);
-    const action2 = a.toggleNewBreweryForm();
-    dispatch(action2);
   };
 
   const handleBreweryEditClick = () => {
@@ -57,17 +55,17 @@ function FormController(props) {
     dispatch(action2);
   }
 
-  const handleEditingBreweryInList = (breweryToEdit) => {
-    const { dispatch } = props;
-    const action = a.addBrewery(breweryToEdit);
-    dispatch(action);
-    const action2 = a.unselectBrewery();
-    dispatch(action2);
-    if (props.breweryEditing) {
-      const action = a.toggleBreweryEdit();
-      dispatch(action);
-    }
-  };
+  // const handleEditingBreweryInList = (breweryToEdit) => {
+  //   const { dispatch } = props;
+  //   const action = a.addBrewery(breweryToEdit);
+  //   dispatch(action);
+  //   const action2 = a.unselectBrewery();
+  //   dispatch(action2);
+  //   if (props.breweryEditing) {
+  //     const action = a.toggleBreweryEdit();
+  //     dispatch(action);
+  //   }
+  // };
 
   const handleDeletingBrewery = (id) => {
     const { dispatch } = props;
@@ -85,14 +83,12 @@ function FormController(props) {
     dispatch(action);
   };
 
-  const handleAddingNewBeerToList = (newBeer) => {
+  const handleAddingNewBeerToList = () => {
     const { dispatch } = props;
-    const action = a.addBeer(newBeer);
+    const action = a.toggleNewBeerForm();
     dispatch(action);
-    const action2 = a.toggleNewBeerForm();
+    const action2 = a.unselectBrewery();
     dispatch(action2);
-    const action3 = a.unselectBrewery();
-    dispatch(action3);
   };
 
   const handleChangingSelectedBeer = (id) => {
@@ -108,17 +104,17 @@ function FormController(props) {
     dispatch(action)
   };
 
-  const handleEditingBeerInList = (beerToEdit) => {
-    const { dispatch } = props;
-    const action = a.addBeer(beerToEdit);
-    dispatch(action);
-    const action2 = a.unselectBeer();
-    dispatch(action2);
-    if (props.beerEditing) {
-      const action = a.toggleBeerEdit();
-      dispatch(action);
-    }
-  };
+  // const handleEditingBeerInList = (beerToEdit) => {
+  //   const { dispatch } = props;
+  //   const action = a.addBeer(beerToEdit);
+  //   dispatch(action);
+  //   const action2 = a.unselectBeer();
+  //   dispatch(action2);
+  //   if (props.beerEditing) {
+  //     const action = a.toggleBeerEdit();
+  //     dispatch(action);
+  //   }
+  // };
 
   const handleDeletingBeer = (id) => {
     const { dispatch } = props;
@@ -141,7 +137,7 @@ function FormController(props) {
     return (
       <EditBeerForm
         beer={props.selectedBeer}
-        onEditBeer={handleEditingBeerInList}
+        // onEditBeer={handleEditingBeerInList}
         onClickBeerEdit={handleBeerEditClick}
       />
     )
@@ -159,7 +155,7 @@ function FormController(props) {
     return (
       <EditBreweryForm
         brewery={props.selectedBrewery}
-        onEditBrewery={handleEditingBreweryInList}
+        // onEditBrewery={handleEditingBreweryInList}
         onClickBreweryEdit={handleEditGoBackButton}
       />
     )

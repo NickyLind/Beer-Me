@@ -35,34 +35,10 @@ export const displayFormsOnMain = () => ({
 });
 // displays the forms controller on the main view 
 
-export const addBeer = (beer) => {
-  const { name, style, abv, description, id, breweryId } = beer;
-  return {
-    type: c.ADD_BEER,
-    name,
-    style,
-    abv,
-    description,
-    id,
-    breweryId,
-  }
-};
-
 export const deleteBeer = (id) => ({
   type: c.DELETE_BEER,
   id
 });
-
-export const addBrewery = (brewery) => {
-  const { name, location, description, id } = brewery;
-  return {
-    type: c.ADD_BREWERY,
-    name,
-    location,
-    description,
-    id,
-  }
-};
 
 export const deleteBrewery = (id) => ({
   type: c.DELETE_BREWERY,

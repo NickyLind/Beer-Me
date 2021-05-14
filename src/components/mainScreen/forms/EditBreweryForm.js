@@ -11,6 +11,7 @@ function EditBreweryForm(props) {
       location: event.target.location.value,
       description: event.target.description.value,
       id: brewery.id,
+      addedToDatabase: brewery.addedToDatabase,
     });
   }
 

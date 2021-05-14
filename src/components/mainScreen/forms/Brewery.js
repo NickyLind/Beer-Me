@@ -38,7 +38,7 @@ function Brewery(props) {
           whenBeerClicked={props.whenBeerClicked}
           onClickingDeleteBeer={props.onClickingDeleteBeer}
         />
-      )};
+      )}
       <hr />
     </React.Fragment>
   )
