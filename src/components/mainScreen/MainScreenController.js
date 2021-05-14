@@ -2,8 +2,10 @@ import React from 'react';
 import SelectorController from "./selector/SelectorController";
 import FormController from "./forms/FormController";
 import LogInController from "./login/LogInController";
+import SidebarController from "../SidebarController";
 import { connect } from "react-redux";
 import * as a from "../../actions/index.js";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function MainScreenController(props) {
 
@@ -18,22 +20,39 @@ function MainScreenController(props) {
   }
 
 
-  if (props.displayLoginOnMain) {
-    return (
-      <LogInController onReturnHome={handleDisplayLogin} />
-    )
-  } else if (props.displayFormsOnMain) {
-    return (
-      <React.Fragment>
-        <FormController />
-      </React.Fragment>
-    )
-  } else {
-    return (
-      <SelectorController />
-    )
-  }
-};
+  return (
+    <Router>
+      <SidebarController />
+      <Switch>
+        <Route path="/login">
+          <LogInController onReturnHome={handleDisplayLogin} />
+        </Route>
+        <Route path="/userBreweries">
+          <FormController />
+        </Route>
+        <Route path="/">
+          <SelectorController />
+        </Route>
+      </Switch>
+    </Router>
+  );
+}
+//   if (props.displayLoginOnMain) {
+//     return (
+//       <LogInController onReturnHome={handleDisplayLogin} />
+//     )
+//   } else if (props.displayFormsOnMain) {
+//     return (
+//       <React.Fragment>
+//         <FormController />
+//       </React.Fragment>
+//     )
+//   } else {
+//     return (
+//       <SelectorController />
+//     )
+//   }
+// };
 
 const mapStateToProps = state => {
   return {

@@ -1,6 +1,10 @@
 import React from 'react';
+import { withRouter } from "react-router-dom";
 
 function LogInConfirm(props) {
+  const goHome = () => {
+    props.history.push('/')
+  }
 
   return (
     <React.Fragment>
@@ -11,9 +15,9 @@ function LogInConfirm(props) {
       <p>OR</p>
       <p>There was an error with your login!</p>
       <hr />
-      <button onClick={props.onReturnHome}>Home</button>
+      <button onClick={goHome.bind(props)}>Home</button>
     </React.Fragment>
   );
 };
 
-export default LogInConfirm;
+export default withRouter(LogInConfirm);

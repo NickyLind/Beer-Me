@@ -61,14 +61,14 @@ function SidebarController(props) {
           buttonText={buttonText}
           loginText={loginText}
         />
-        <MainScreenController />
+        {/* <MainScreenController /> */}
       </React.Fragment>
     )
   } else {
     return (
       <React.Fragment>
         <button onClick={handleClick}>SidebarButton</button>
-        <MainScreenController />
+        {/* <MainScreenController /> */}
       </React.Fragment>
     )
   }

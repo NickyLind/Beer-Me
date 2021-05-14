@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from "react-redux";
 import { selectedBeer, selectedBrewery } from '../../actions/index.js';
+import { Link } from "react-router-dom";
 
 
 function Sidebar(props) {
@@ -34,51 +35,19 @@ function Sidebar(props) {
   //   );
   // }
 
-  const [state, setState] = useState({
-    newBeerFormVisible: props.newBeerFormVisible,
-    newBreweryFormVisible: props.newBreweryFormVisible,
-    selectedBeer: props.selectedBeer,
-    selectedBrewery: props.selectedBrewery,
-    beerEditing: props.beerEditing,
-    breweryEditing: props.breweryEditing,
-  });
 
-  const deselectState = () => {
-
-    if (state !== {
-      newBeerFormVisible: false,
-      newBreweryFormVisible: false,
-      selectedBeer: null,
-      selectedBrewery: null,
-      beerEditing: false,
-      breweryEditing: false,
-    }) {
-      setState({
-        newBeerFormVisible: false,
-        newBreweryFormVisible: false,
-        selectedBeer: null,
-        selectedBrewery: null,
-        beerEditing: false,
-        breweryEditing: false,
-      });
-    }
-  }
-  const handleClickYourBreweries = () => {
-    props.onDisplayFormsOnMain();
+  const handleToggleSideBar = () => {
     props.onToggleSidebar();
-    deselectState();
   };
-
-
-
 
   return (
     <React.Fragment>
       <hr />
       <h3><em>SideBar</em></h3>
       <hr />
-      <button onClick={handleClickLogin} >{props.loginText}</button><br />
-      <button onClick={handleClickYourBreweries}>{props.buttonText}</button><br />
+      <Link to="/" onClick={handleToggleSideBar}>Home</Link><br />
+      <Link to="/login" onClick={handleClickLogin} >{props.loginText}</Link><br />
+      <Link to="/userBreweries" onClick={handleToggleSideBar}>Your Breweries</Link><br />
       <hr />
     </React.Fragment>
   );
