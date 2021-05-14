@@ -17,7 +17,6 @@ function NewBreweryForm(props) {
         name: event.target.name.value,
         location: event.target.location.value,
         description: event.target.description.value,
-        breweryId: v4(),
         addedToDatabase: firestore.FieldValue.serverTimestamp()
       }
     );

@@ -28,7 +28,7 @@ function FormController(props) {
       const firestoreBrewery = {
         name: brewery.get("name"),
         location: brewery.get("location"),
-        breweryId: brewery.get("breweryId"),
+        id: brewery.get("id"),
         description: brewery.get("description"),
         addedToDatabase: brewery.get("addedToDatabase")
       }
