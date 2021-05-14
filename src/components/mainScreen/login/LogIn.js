@@ -1,6 +1,10 @@
 import React from 'react';
+import { withRouter } from "react-router-dom";
 
 function LogIn(props) {
+  const goHome = () => {
+    props.history.push('/')
+  }
 
   return (
     <React.Fragment>
@@ -10,9 +14,11 @@ function LogIn(props) {
       <button onClick={props.onLoggingIn}>Log In</button><br />
       <p>OR</p>
       <button onClick={props.onLoggingIn}>Sign Up</button>
+      <p>OR</p>
+      <button onClick={goHome.bind(props)}>Home</button>
       <hr />
     </React.Fragment>
   );
 };
 
-export default LogIn;
+export default withRouter(LogIn);
