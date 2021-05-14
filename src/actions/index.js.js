@@ -33,17 +33,7 @@ export const displayLoginOnMain = () => ({
 export const displayFormsOnMain = () => ({
   type: c.DISPLAY_FORMS_ON_MAIN
 });
-// displays the forms controller on the main view 
 
-export const deleteBeer = (id) => ({
-  type: c.DELETE_BEER,
-  id
-});
-
-export const deleteBrewery = (id) => ({
-  type: c.DELETE_BREWERY,
-  id
-});
 
 export const selectedBrewery = (id) => ({
   type: c.SELECT_BREWERY,

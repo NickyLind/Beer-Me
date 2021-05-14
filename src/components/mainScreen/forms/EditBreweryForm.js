@@ -5,8 +5,8 @@ import { useFirestore } from "react-redux-firebase";
 
 
 function EditBreweryForm(props) {
-  const { brewery } = props;
   const firestore = useFirestore();
+  const { brewery } = props;
 
   function HandleEditBreweryFormSubmission(event) {
     event.preventDefault();

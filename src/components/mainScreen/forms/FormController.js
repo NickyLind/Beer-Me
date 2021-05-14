@@ -28,7 +28,7 @@ function FormController(props) {
       const firestoreBrewery = {
         name: brewery.get("name"),
         location: brewery.get("location"),
-        id: brewery.get("id"),
+        id: brewery.id,
         description: brewery.get("description"),
         addedToDatabase: brewery.get("addedToDatabase")
       }
@@ -106,7 +106,8 @@ function FormController(props) {
         abv: beer.get("abv"),
         description: beer.get("description"),
         breweryId: beer.get("breweryId"),
-        addedToDatabase: beer.get("addedToDatabase")
+        addedToDatabase: beer.get("addedToDatabase"),
+        id: beer.id
       }
       const { dispatch } = props;
       const action = a.selectedBeer(firestoreBeer)
@@ -191,8 +192,6 @@ function FormController(props) {
       <BreweryList
         onAddNewBeer={toggleNewBeerForm}
         onAddNewBrewery={toggleNewBreweryForm}
-        beerList={props.masterBeerList}
-        breweryList={props.masterBreweryList}
         onBrewerySelection={handleChangingSelectedBrewery}
         onBeerSelection={handleChangingSelectedBeer}
         onHandleBeerEditClick={handleBeerEditClick}
@@ -208,8 +207,6 @@ const mapStateToProps = state => {
   return {
     newBeerFormVisible: state.newBeerFormVisible,
     newBreweryFormVisible: state.newBreweryFormVisible,
-    masterBeerList: state.masterBeerList,
-    masterBreweryList: state.masterBreweryList,
     selectedBrewery: state.selectedBrewery,
     selectedBeer: state.selectedBeer,
     beerEditing: state.beerEditing,
