@@ -19,7 +19,7 @@ function NewBeerForm(props) {
         style: event.target.style.value,
         abv: event.target.abv.value,
         description: event.target.description.value,
-        breweryId: props.selectedBrewery.id,
+        breweryId: props.selectedBrewery.breweryId,
         addedToDatabase: firestore.FieldValue.serverTimestamp()
       }
     );

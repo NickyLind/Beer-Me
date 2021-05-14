@@ -8,6 +8,7 @@ import Confirm from "./Confirm";
 import { connect } from "react-redux";
 import * as a from "../../../actions/index.js";
 import BreweryDetail from './BreweryDetail';
+import { withFirestore } from "react-redux-firebase";
 
 function FormController(props) {
 
@@ -23,11 +24,20 @@ function FormController(props) {
   };
 
   const handleChangingSelectedBrewery = (id) => {
-    const selectedBrewery = props.masterBreweryList[id];
-    const { dispatch } = props;
-    const action = a.selectedBrewery(selectedBrewery)
-    dispatch(action);
+    props.firestore.get({ collection: "breweries", doc: id }).then((brewery) => {
+      const firestoreBrewery = {
+        name: brewery.get("name"),
+        location: brewery.get("location"),
+        breweryId: brewery.get("breweryId"),
+        description: brewery.get("description"),
+        addedToDatabase: brewery.get("addedToDatabase")
+      }
+      const { dispatch } = props;
+      const action = a.selectedBrewery(firestoreBrewery);
+      dispatch(action);
+    });
   };
+  // TODO: catch block here for error handling if id passed to function doesn't exist (lesson 10 React:NoSQL)
 
   const unselectBrewery = () => {
     const { dispatch } = props
@@ -206,4 +216,4 @@ const mapStateToProps = state => {
 
 FormController = connect(mapStateToProps)(FormController);
 
-export default FormController;
+export default withFirestore(FormController);
