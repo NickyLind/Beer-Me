@@ -1,7 +1,6 @@
 import React from "react";
 import ReusableBeerForm from "./ReusableBeerForm";
 import PropTypes from "prop-types";
-import { selectedBrewery } from "../../../actions/index.js";
 import { connect } from "react-redux";
 import { useFirestore } from "react-redux-firebase";
 

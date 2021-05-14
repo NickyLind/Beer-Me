@@ -2,7 +2,6 @@ import React from "react";
 
 function Beer(props) {
 
-  // write a function that combines onHandleBeerEditClick and selected beer
   const editBeerButton = () => {
     props.whenBeerClicked(props.id);
     props.onHandleBeerEditClick();

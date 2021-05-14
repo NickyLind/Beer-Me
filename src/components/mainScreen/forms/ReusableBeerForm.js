@@ -1,5 +1,4 @@
 import React from 'react';
-import * as a from "../../../actions/index.js";
 import { connect } from "react-redux"
 
 

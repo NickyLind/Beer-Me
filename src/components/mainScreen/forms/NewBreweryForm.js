@@ -1,7 +1,6 @@
 import React from "react";
 import ReusableBreweryForm from "./ReusableBreweryForm";
-import { v4 } from "uuid";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import { useFirestore } from "react-redux-firebase";
 
 function NewBreweryForm(props) {

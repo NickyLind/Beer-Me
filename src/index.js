@@ -8,21 +8,23 @@ import rootReducer from "./reducers/Index";
 import { ReactReduxFirebaseProvider } from "react-redux-firebase";
 import { createFirestoreInstance } from "redux-firestore";
 import firebase from "./firebase";
+import "firebase/auth";
 
 const store = createStore(rootReducer);
 
 const rrfProps = {
   firebase,
   config: {
-    userProfile: "users"
+    userProfile: "users",
+    userFirestoreForProfile: true,
   },
   dispatch: store.dispatch,
   createFirestoreInstance
 }
 
-store.subscribe(() =>
-  console.log(store.getState())
-)
+// store.subscribe(() =>
+//   console.log(store.getState())
+// )
 
 
 ReactDOM.render(
