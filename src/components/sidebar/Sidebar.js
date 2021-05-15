@@ -1,9 +1,14 @@
 import React from 'react';
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { withFirestore, isLoaded } from "react-redux-firebase";
+
 
 
 function Sidebar(props) {
+
+  const auth = props.firebase.auth();
+
   const handleClickLogin = () => {
     if (!props.loginVisible) {
       props.onToggleSidebar();
@@ -16,19 +21,44 @@ function Sidebar(props) {
     props.onToggleSidebar();
   };
 
-  return (
-    <React.Fragment>
-      <hr />
-      <h3><em>SideBar</em></h3>
-      <hr />
-      <Link to="/" onClick={handleToggleSideBar}>Home</Link><br />
-      <Link to="/login" onClick={handleClickLogin} >{props.loginText}</Link><br />
-      <Link to="/userBreweries" onClick={handleToggleSideBar}>Your Breweries</Link><br />
-      <hr />
-    </React.Fragment>
-  );
-};
+  if (!isLoaded(auth)) {
+    return (
+      <React.Fragment>
+        <hr />
+        <h3><em>SideBar</em></h3>
+        <hr />
+        <h3>...Loading</h3>
+      </React.Fragment>
+    );
+  };
 
+  if ((isLoaded(auth)) && (auth.currentUser == null)) {
+    return (
+      <React.Fragment>
+        <hr />
+        <h3><em>SideBar</em></h3>
+        <hr />
+        <Link to="/" onClick={handleToggleSideBar}>Home</Link><br />
+        <Link to="/login" onClick={handleClickLogin} >Log In</Link><br />
+        <hr />
+      </React.Fragment>
+    );
+  };
+
+  if ((isLoaded(auth)) && (auth.currentUser != null)) {
+    return (
+      <React.Fragment>
+        <hr />
+        <h3><em>SideBar</em></h3>
+        <hr />
+        <Link to="/" onClick={handleToggleSideBar}>Home</Link><br />
+        <Link to="/login" onClick={handleClickLogin} >Log Out</Link><br />
+        <Link to="/userBreweries" onClick={handleToggleSideBar}>Your Breweries</Link><br />
+        <hr />
+      </React.Fragment>
+    )
+  }
+}
 const mapStateToProps = state => {
   return {
     loginVisible: state.loginVisible,
@@ -37,4 +67,4 @@ const mapStateToProps = state => {
 
 Sidebar = connect(mapStateToProps)(Sidebar)
 
-export default Sidebar
+export default withFirestore(Sidebar)

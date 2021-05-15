@@ -2,6 +2,8 @@ import React from 'react';
 import Sidebar from "./sidebar/Sidebar";
 import * as a from "../actions/index.js";
 import { connect } from "react-redux";
+import firebase from "firebase/app";
+import "firebase/database";
 
 function SidebarController(props) {
 
@@ -11,7 +13,16 @@ function SidebarController(props) {
     dispatch(action);
   }
 
+
   const handleLogOut = () => {
+
+    firebase.auth().signOut().then(function () {
+      console.log("Successfully signed out!");
+    }).catch(function (error) {
+      console.log(error.message);
+    });
+    ;
+
     const { dispatch } = props;
     const action = a.toggleLogin();
     dispatch(action);
@@ -19,6 +30,7 @@ function SidebarController(props) {
     dispatch(action2)
   };
 
+  // ! add routing or toggling here that allows a user to log out
   let loginText = "";
   if (props.loginVisible) {
     loginText = "Log Out"
@@ -55,5 +67,6 @@ const mapStateToProps = state => {
 
 
 SidebarController = connect(mapStateToProps)(SidebarController);
+// ! think this is what the linter doesn't like might have to change the name here
 
 export default SidebarController
