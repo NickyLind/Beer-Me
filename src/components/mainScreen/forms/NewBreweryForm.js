@@ -2,6 +2,8 @@ import React from "react";
 import ReusableBreweryForm from "./ReusableBreweryForm";
 // import PropTypes from "prop-types";
 import { useFirestore } from "react-redux-firebase";
+import firebase from "firebase/app";
+import "firebase/database";
 
 function NewBreweryForm(props) {
 
@@ -16,7 +18,8 @@ function NewBreweryForm(props) {
         name: event.target.name.value,
         location: event.target.location.value,
         description: event.target.description.value,
-        addedToDatabase: firestore.FieldValue.serverTimestamp()
+        addedToDatabase: firestore.FieldValue.serverTimestamp(),
+        userId: firebase.auth().currentUser.uid
       }
     );
   }

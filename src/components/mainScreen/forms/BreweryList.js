@@ -2,6 +2,8 @@ import React from 'react';
 import Brewery from "./Brewery";
 import { useSelector } from "react-redux";
 import { useFirestoreConnect, isLoaded } from "react-redux-firebase";
+import firebase from "firebase/app";
+import "firebase/database";
 
 function BreweryList(props) {
 
@@ -26,25 +28,28 @@ function BreweryList(props) {
         <h3><em>Brewery List Component</em></h3>
         <hr />
         <div style={scrollBox}>
-          {breweries.map((brewery) => {
-            return (
-              <Brewery
-                whenBreweryClicked={props.onBrewerySelection}
-                whenBeerClicked={props.onBeerSelection}
-                name={brewery.name}
-                location={brewery.location}
-                description={brewery.description}
-                id={brewery.id}
-                key={brewery.id}
-                onAddNewBeer={props.onAddNewBeer}
-                beerList={props.beerList}
-                onHandleBeerEditClick={props.onHandleBeerEditClick}
-                onClickingDeleteBeer={props.onClickingDeleteBeer}
-                onHandleBreweryEditClick={props.onHandleBreweryEditClick}
-                onClickingDeleteBrewery={props.onClickingDeleteBrewery}
-              />
-            )
-          })}
+          {breweries
+            .filter(brewery => brewery.userId === firebase.auth().currentUser.uid)
+            .map((brewery) => {
+              return (
+                <Brewery
+                  whenBreweryClicked={props.onBrewerySelection}
+                  whenBeerClicked={props.onBeerSelection}
+                  name={brewery.name}
+                  location={brewery.location}
+                  description={brewery.description}
+                  id={brewery.id}
+                  key={brewery.id}
+                  userId={brewery.userId}
+                  onAddNewBeer={props.onAddNewBeer}
+                  beerList={props.beerList}
+                  onHandleBeerEditClick={props.onHandleBeerEditClick}
+                  onClickingDeleteBeer={props.onClickingDeleteBeer}
+                  onHandleBreweryEditClick={props.onHandleBreweryEditClick}
+                  onClickingDeleteBrewery={props.onClickingDeleteBrewery}
+                />
+              )
+            })}
         </div>
 
         <button onClick={props.onAddNewBrewery}>add new brewery</button>

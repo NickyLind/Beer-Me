@@ -30,7 +30,8 @@ function FormController(props) {
         location: brewery.get("location"),
         id: brewery.id,
         description: brewery.get("description"),
-        addedToDatabase: brewery.get("addedToDatabase")
+        addedToDatabase: brewery.get("addedToDatabase"),
+        userId: brewery.userId
       }
       const { dispatch } = props;
       const action = a.selectedBrewery(firestoreBrewery);
