@@ -1,7 +1,7 @@
 import React from 'react';
 import Brewery from "./Brewery";
 import { useSelector } from "react-redux";
-import { useFirestoreConnect, isLoaded } from "react-redux-firebase";
+import { useFirestoreConnect, isLoaded, isEmpty } from "react-redux-firebase";
 import firebase from "firebase/app";
 import "firebase/database";
 
@@ -56,6 +56,15 @@ function BreweryList(props) {
         <hr />
       </React.Fragment>
     );
+  } else if (isEmpty(breweries)) {
+    return (
+      <React.Fragment>
+        <hr />
+        <h3><em>Brewery List Component</em></h3>
+        <hr />
+        <h1>Add your first brewery!</h1>
+      </React.Fragment>
+    )
   } else {
     return (
       <React.Fragment>

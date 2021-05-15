@@ -15,14 +15,11 @@ function SidebarController(props) {
 
 
   const handleLogOut = () => {
-
     firebase.auth().signOut().then(function () {
       console.log("Successfully signed out!");
     }).catch(function (error) {
       console.log(error.message);
     });
-    ;
-
     const { dispatch } = props;
     const action = a.toggleLogin();
     dispatch(action);

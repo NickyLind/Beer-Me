@@ -33,14 +33,6 @@ function LogIn(props) {
     });
   };
 
-  // const doSignOut = () => {
-  //   firebase.auth().signOut().then(function () {
-  //     console.log("Successfully signed out!");
-  //   }).catch(function () {
-  //     console.log(error.message);
-  //   });
-  // };
-
   return (
     <React.Fragment>
       <hr />

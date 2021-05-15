@@ -4,16 +4,16 @@ import EditBeerForm from "./EditBeerForm";
 import NewBreweryForm from "./NewBreweryForm";
 import EditBreweryForm from "./EditBreweryForm";
 import BreweryList from "./BreweryList";
-import Confirm from "./Confirm";
+// import Confirm from "./Confirm";
 import { connect } from "react-redux";
 import * as a from "../../../actions/index.js";
 import BreweryDetail from './BreweryDetail';
-import { withFirestore } from "react-redux-firebase";
+import { withFirestore, isLoaded } from "react-redux-firebase";
 
 function FormController(props) {
 
-  //* handle logic for switching between ReusableBeer, ReusableBrewery, BreweryList, Confirm components
-  // ! state: beerEditing, breweryEditing, selectedBeer, selectedBrewery, beerFormVisibleOnPage, breweryFormVisibleOnPage, masterBreweryList, CUConfirm
+
+  const auth = props.firebase.auth();
 
   // * BREWERY COMPONENTS LOGIC ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -189,18 +189,32 @@ function FormController(props) {
     //   }
     // )
   } else {
-    return (
-      <BreweryList
-        onAddNewBeer={toggleNewBeerForm}
-        onAddNewBrewery={toggleNewBreweryForm}
-        onBrewerySelection={handleChangingSelectedBrewery}
-        onBeerSelection={handleChangingSelectedBeer}
-        onHandleBeerEditClick={handleBeerEditClick}
-        onHandleBreweryEditClick={handleBreweryEditClick}
-        onClickingDeleteBeer={handleDeletingBeer}
-        onClickingDeleteBrewery={handleDeletingBrewery}
-      />
-    )
+    if (!isLoaded(auth)) {
+      return (
+        <React.Fragment>
+          <h3>...Loading</h3>
+        </React.Fragment>
+      )
+    } else if ((isLoaded(auth)) && (auth.currentUser == null)) {
+      return (
+        <React.Fragment>
+          <h3>You must be logged in to view your breweries</h3>
+        </React.Fragment>
+      )
+    } else {
+      return (
+        <BreweryList
+          onAddNewBeer={toggleNewBeerForm}
+          onAddNewBrewery={toggleNewBreweryForm}
+          onBrewerySelection={handleChangingSelectedBrewery}
+          onBeerSelection={handleChangingSelectedBeer}
+          onHandleBeerEditClick={handleBeerEditClick}
+          onHandleBreweryEditClick={handleBreweryEditClick}
+          onClickingDeleteBeer={handleDeletingBeer}
+          onClickingDeleteBrewery={handleDeletingBrewery}
+        />
+      )
+    }
   }
 };
 
