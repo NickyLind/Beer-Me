@@ -20,10 +20,6 @@ export const toggleLogin = () => ({
   type: c.TOGGLE_LOGIN
 });
 
-export const toggleLogout = () => ({
-  type: c.TOGGLE_LOGOUT
-});
-
 export const selectedBrewery = (id) => ({
   type: c.SELECT_BREWERY,
   id
