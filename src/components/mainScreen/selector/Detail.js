@@ -7,6 +7,7 @@ function Detail(props) {
       <hr />
       <h3><em>{randomBeer.name}</em></h3>
       <hr />
+      <p>{randomBeer.breweryId}</p>
       <p>Style: {randomBeer.style}</p>
       <p>ABV:{randomBeer.abv} </p>
       <p>{randomBeer.description}</p>
