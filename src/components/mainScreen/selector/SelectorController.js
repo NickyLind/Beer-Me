@@ -24,30 +24,38 @@ function SelectorController(props) {
   var beers = useSelector(state => state.firestore.ordered.beers)
   var breweries = useSelector(state => state.firestore.ordered.breweries)
 
-
+  let filterArray = []
+  let idArray = []
   const handleGrabbingValuesForSearch = async (selectedBeer, selectedBrewery) => {
     var beerArray = []
     const beerStyle = await firebase.firestore().collection("beers").where("style", "==", selectedBeer).get()
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
           beerArray.push
-            // console.log
             (doc.id);
         });
-        console.log(beerArray)
-      });
+        console.log("beer array: " + beerArray)
+        beerArray.forEach(element => {
+          filterArray.push(element)
+        })
+        console.log("filter array " + filterArray)
+        var unshuffled = Object.values({ ...beers })
+        unshuffled.forEach(element => {
+          idArray.push(element.id)
+        });
+        // .filter(beer => filterArray.includes(beer.id))
+        console.log("idArray " + idArray)
+        var query = idArray.filter(index => beerArray.includes(index))
+        console.log("query " + query)
+      })
     return (beerStyle)
-    // console.log(beerStyle)
-    //   const breweryName = await firebase.firestore().collection("breweries").where("name", "==", selectedBrewery)
-    //   console.log(breweryName)
   }
-  // console.log(beerArray)
   function shuffle(array) {
     return array[Math.floor(Math.random() * array.length)];
   }
-  var unshuffled = Object.keys({ ...beers })
-  // .filter(beer => beer == beerArray)
   //* since this is going to be what's passed in as an argument to the shuffle function it will need to be filtered to only include the results of the selectedBeer && selectedBrewery UNLESS neither are selected
+  var unshuffled = Object.keys({ ...beers })
+
   let beerMeIndex = shuffle(unshuffled)
   // console.log(beers[beerMeIndex])
 
