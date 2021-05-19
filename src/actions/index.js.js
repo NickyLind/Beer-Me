@@ -8,8 +8,8 @@ export const toggleBeerSelector = () => ({
   type: c.TOGGLE_BEER_SELECTOR
 });
 
-export const toggleHomePage = () => ({
-  type: c.TOGGLE_HOME_PAGE
+export const toggleFilter = () => ({
+  type: c.TOGGLE_FILTER
 })
 
 export const toggleNewBeerForm = () => ({

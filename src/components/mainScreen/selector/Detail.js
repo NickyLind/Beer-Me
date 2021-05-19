@@ -11,7 +11,7 @@ function Detail(props) {
       <p>Style: {randomBeer.style}</p>
       <p>ABV:{randomBeer.abv} </p>
       <p>{randomBeer.description}</p>
-      <button onClick={props.toggleSelector}>Go Back</button>
+      <button onClick={props.toggleSelector}>try again!</button>
       <hr />
     </React.Fragment>
   );

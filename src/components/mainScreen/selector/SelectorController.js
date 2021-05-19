@@ -14,16 +14,9 @@ function SelectorController(props) {
   // * logic for displaying between Selector and Detail Components will go here
   const handleClick = () => {
     const { dispatch } = props;
-    const action = a.toggleBeerSelector();
+    const action = a.toggleFilter();
     dispatch(action);
   }
-
-  const displayHome = () => {
-    const { dispatch } = props;
-    const action = a.toggleHomePage()
-    dispatch(action)
-  }
-
 
   useFirestoreConnect([
     { collection: "beers" },

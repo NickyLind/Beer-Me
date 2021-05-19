@@ -10,7 +10,7 @@ import breweryEditReducer from "./brewery-edit-reducer";
 import selectedBeerReducer from "./selected-beer-reducer";
 import { firestoreReducer } from "redux-firestore";
 import queriedBeerReducer from "./queried-beer-reducer";
-import homePageReducer from "./home-page-reducer";
+import filterToggleReducer from "./filter-toggle-reducer";
 
 
 const rootReducer = combineReducers({
@@ -24,7 +24,7 @@ const rootReducer = combineReducers({
   beerEditing: beerEditReducer,
   breweryEditing: breweryEditReducer,
   selectedBeerQuery: queriedBeerReducer,
-  homePageVisible: homePageReducer,
+  filterVisible: filterToggleReducer,
   firestore: firestoreReducer
 });
 

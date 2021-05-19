@@ -21,11 +21,17 @@ function Home(props) {
   }
   var unshuffled = Object.keys({ ...beers })
   let beerMeIndex = shuffle(unshuffled)
-  const { dispatch } = props;
-  const action = a.selectedQuery(beers[beerMeIndex]);
-  dispatch(action);
+
 
   const handleClick = () => {
+    const { dispatch } = props;
+    const action = a.toggleFilter();
+    dispatch(action);
+    const action2 = a.unselectQuery();
+    dispatch(action2);
+  }
+
+  const handleTryAgain = () => {
     const { dispatch } = props;
     const action = a.toggleBeerSelector();
     dispatch(action);
@@ -38,48 +44,69 @@ function Home(props) {
     const action = a.toggleBeerSelector();
     dispatch(action);
   }
-  if (props.beerMeDetails) {
+  if ((props.beerMeDetails) && (props.selectedBeerQuery == null)) {
     return (
       <React.Fragment>
         <hr />
         <h3>Home Component</h3>
-        <p onClick={handleClick}>filter results</p>
-        <SelectorController />
-        <button onClick={BEERME}>Beer Me!</button>
-        {/* <Detail
+        <hr />
+        <Detail
+          toggleSelector={handleTryAgain}
+          // randomBeer={props.selectedBeerQuery}
+          randomBeer={beers[beerMeIndex]}
+        />
+        <hr />
+      </React.Fragment>
+    )
+  } else if ((props.beerMeDetails) && (props.selectedBeerQuery != null)) {
+    return (
+      <React.Fragment>
+        <hr />
+        <h3>Home Component</h3>
+        <hr />
+        <Detail
+          toggleSelector={handleTryAgain}
+          randomBeer={props.selectedBeerQuery}
+        // randomBeer={beers[beerMeIndex]}
+        />
+        <hr />
+      </React.Fragment>
+    )
+  } else if (isLoaded(beers)) {
+    if (!props.filterVisible) {
+      return (
+        <React.Fragment>
+          <hr />
+          <h3>Home Component</h3>
+          <hr />
+          <p onClick={handleClick}>filter results</p>
+          <button onClick={BEERME}>Beer Me!</button>
+          {/* <Detail
           toggleSelector={}
         // randomBeer={props.selectedBeerQuery}
         /> */}
-        <hr />
-        <hr />
-      </React.Fragment>
-    )
-  } else if ((!props.beerMeDetails) && (props.selectedBeerQuery != null)) {
-    return (
-      <React.Fragment>
-        <hr />
-        <h3>Home Component</h3>
-        <p>filter results</p>
-        <Detail
-          randomBeer={props.selectedBeerQuery}
-        />
-        <button onClick={BEERME}>Beer Me!</button>
-        <hr />
-        <hr />
-      </React.Fragment>
-    )
+          <hr />
+        </React.Fragment>
+      )
+    } else if (props.filterVisible) {
+      return (
+        <React.Fragment>
+          <hr />
+          <h3>Home Component</h3>
+          <SelectorController />
+        </React.Fragment>
+      )
+    } else {
+      return (
+        <React.Fragment>
+          <h3>an error occured</h3>
+        </React.Fragment>
+      )
+    }
   } else {
     return (
-
-
       <React.Fragment>
-        <hr />
-        <h3>Home Component</h3>
-        <p>filter results</p>
-        <SelectorController />
-        <button>Beer Me!</button>
-        <hr />
-        <hr />
+        <h3>loading...</h3>
       </React.Fragment>
     )
   }
@@ -87,7 +114,7 @@ function Home(props) {
 const mapStateToProps = state => {
   return {
     beerMeDetails: state.beerMeDetails,
-    selectedBeerQuery: state.selectedBeerQuery
+    filterVisible: state.filterVisible
   }
 }
 
