@@ -11,10 +11,13 @@ import selectedBeerReducer from "./selected-beer-reducer";
 import { firestoreReducer } from "redux-firestore";
 import queriedBeerReducer from "./queried-beer-reducer";
 import filterToggleReducer from "./filter-toggle-reducer";
+import homePageReducer from "./home-page-reducer";
 
 
 const rootReducer = combineReducers({
   sidebarVisible: sidebarVisibleReducer,
+  homepageVisible: homePageReducer,
+  selectedBeerQuery: queriedBeerReducer,
   beerMeDetails: selectorToggleReducer,
   newBeerFormVisible: beerFormVisibleOnPage,
   newBreweryFormVisible: breweryFormVisibleOnPage,
@@ -23,7 +26,6 @@ const rootReducer = combineReducers({
   selectedBeer: selectedBeerReducer,
   beerEditing: beerEditReducer,
   breweryEditing: breweryEditReducer,
-  selectedBeerQuery: queriedBeerReducer,
   filterVisible: filterToggleReducer,
   firestore: firestoreReducer
 });
