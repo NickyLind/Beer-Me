@@ -36,6 +36,14 @@ function SelectorController(props) {
     console.log(selectedBeer)
     if (selectedBeer == "N/A") {
       console.log("shuffle all beers")
+      function shuffle(array) {
+        return array[Math.floor(Math.random() * array.length)];
+      }
+      var unshuffled = Object.keys({ ...beers })
+      let beerMeIndex = shuffle(unshuffled)
+      const { dispatch } = props;
+      const action = a.selectedQuery(beers[beerMeIndex].id);
+      dispatch(action);
       handleClick()
     } else {
       firebase.firestore().collection("beers").where("style", "==", selectedBeer)
