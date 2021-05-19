@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Detail from "./Detail";
 import Selector from "./Selector";
 import { connect } from "react-redux";
@@ -24,7 +24,6 @@ function SelectorController(props) {
   var beers = useSelector(state => state.firestore.ordered.beers)
   var breweries = useSelector(state => state.firestore.ordered.breweries)
 
-  let filterArray = []
   let idArray = []
   const handleGrabbingValuesForSearch = async (selectedBeer, selectedBrewery) => {
     var beerArray = []
@@ -34,30 +33,38 @@ function SelectorController(props) {
           beerArray.push
             (doc.id);
         });
-        console.log("beer array: " + beerArray)
-        beerArray.forEach(element => {
-          filterArray.push(element)
-        })
-        console.log("filter array " + filterArray)
         var unshuffled = Object.values({ ...beers })
         unshuffled.forEach(element => {
           idArray.push(element.id)
         });
-        // .filter(beer => filterArray.includes(beer.id))
         console.log("idArray " + idArray)
         var query = idArray.filter(index => beerArray.includes(index))
-        console.log("query " + query)
+        grabQuery(query)
       })
     return (beerStyle)
+  }
+
+  function grabQuery(content) {
+    console.log(content)
+    var shuffleArray = []
+    for (let i = 0; i < content.length; i++) {
+      shuffleArray.push(i)
+    }
+    var shuffled = shuffleArray[Math.floor(Math.random() * shuffleArray.length)]
+    console.log(shuffled)
+    var result = beers.filter(beer => beer.id == content[shuffled])
+    console.log(result)
+    return result
   }
   function shuffle(array) {
     return array[Math.floor(Math.random() * array.length)];
   }
   //* since this is going to be what's passed in as an argument to the shuffle function it will need to be filtered to only include the results of the selectedBeer && selectedBrewery UNLESS neither are selected
   var unshuffled = Object.keys({ ...beers })
+  console.log(unshuffled)
 
   let beerMeIndex = shuffle(unshuffled)
-  // console.log(beers[beerMeIndex])
+  console.log(beerMeIndex)
 
   if ((props.beerMeDetails) && (isLoaded(beers))) {
 
@@ -71,7 +78,7 @@ function SelectorController(props) {
       <React.Fragment>
         <Detail
           toggleSelector={handleClick}
-          randomBeer={beers[beerMeIndex]}
+          randomBeer={() => grabQuery}
         />
       </React.Fragment>
     );
