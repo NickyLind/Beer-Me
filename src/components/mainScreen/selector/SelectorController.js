@@ -42,7 +42,7 @@ function SelectorController(props) {
       var unshuffled = Object.keys({ ...beers })
       let beerMeIndex = shuffle(unshuffled)
       const { dispatch } = props;
-      const action = a.selectedQuery(beers[beerMeIndex].id);
+      const action = a.selectedQuery(beers[beerMeIndex]);
       dispatch(action);
       handleClick()
     } else {
@@ -59,7 +59,7 @@ function SelectorController(props) {
           var result = beers.filter(beer => beer.id == data[shuffled])
           console.log(result[0].id)
           const { dispatch } = props;
-          const action = a.selectedQuery(result[0].id);
+          const action = a.selectedQuery(result[0]);
           dispatch(action);
         }).then(handleClick)
     }

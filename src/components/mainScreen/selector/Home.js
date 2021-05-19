@@ -15,7 +15,9 @@ function Home(props) {
   }
 
   const BEERME = () => {
-
+    const { dispatch } = props;
+    const action = a.toggleBeerSelector();
+    dispatch(action);
   }
   if (props.beerMeDetails) {
     return (
@@ -24,11 +26,25 @@ function Home(props) {
         <h3>Home Component</h3>
         <p onClick={handleClick}>filter results</p>
         <SelectorController />
-        <button>Beer Me!</button>
+        <button onClick={BEERME}>Beer Me!</button>
         {/* <Detail
           toggleSelector={}
         // randomBeer={props.selectedBeerQuery}
         /> */}
+        <hr />
+        <hr />
+      </React.Fragment>
+    )
+  } else if ((!props.beerMeDetails) && (props.selectedBeerQuery != null)) {
+    return (
+      <React.Fragment>
+        <hr />
+        <h3>Home Component</h3>
+        <p>filter results</p>
+        <Detail
+          randomBeer={props.selectedBeerQuery}
+        />
+        <button onClick={BEERME}>Beer Me!</button>
         <hr />
         <hr />
       </React.Fragment>
