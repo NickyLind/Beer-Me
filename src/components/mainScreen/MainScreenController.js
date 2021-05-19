@@ -1,5 +1,5 @@
 import React from 'react';
-import HomeController from "./selector/HomeController";
+import Home from "./selector/Home";
 import FormController from "./forms/FormController";
 import LogInController from "./login/LogInController";
 import SidebarController from "../SidebarController";
@@ -18,7 +18,7 @@ function MainScreenController() {
           <FormController />
         </Route>
         <Route path="/">
-          <HomeController />
+          <Home />
         </Route>
       </Switch>
     </Router>

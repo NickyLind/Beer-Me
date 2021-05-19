@@ -1,10 +1,11 @@
-import React, { useReducer, useState } from 'react';
+import React from 'react';
 import Detail from "./Detail";
 import SelectorController from "./SelectorController";
 import * as a from "../../../actions/index.js";
 import { useSelector } from "react-redux";
 import { useFirestoreConnect, isLoaded } from "react-redux-firebase";
 import { connect } from "react-redux"
+import classes from "./Home.module.css"
 
 
 
@@ -45,24 +46,15 @@ function Home(props) {
     dispatch(action);
   }
 
-  const [updateNow, setUpdateNow] = useState(true)
-
-  const updateFunc = () => {
-    setUpdateNow(!updateNow)
-  }
-
   if (isLoaded(beers)) {
     if ((props.beerMeDetails) && (props.selectedBeerQuery != null)) {
       return (
-        <React.Fragment>
-          <hr />
+        <React.Fragment >
           <h3>Home Component</h3>
           <p>filter results</p>
-          <hr />
           <Detail
             toggleSelector={handleTryAgain}
             randomBeer={props.selectedBeerQuery}
-          // randomBeer={beers[beerMeIndex]}
           />
           <hr />
         </React.Fragment>
@@ -70,13 +62,9 @@ function Home(props) {
     } else if ((props.beerMeDetails) && (props.selectedBeerQuery == null)) {
       return (
         <React.Fragment>
-          <hr />
-          <h3>Home Component</h3>
-          <hr />
           <p>filter results</p>
           <Detail
             toggleSelector={handleTryAgain}
-            // randomBeer={props.selectedBeerQuery}
             randomBeer={beers[beerMeIndex]}
           />
           <hr />
@@ -86,21 +74,16 @@ function Home(props) {
       if (!props.filterVisible) {
         return (
           <React.Fragment>
-            <hr />
-            <h3>Home Component</h3>
-            <hr />
-            <p onClick={handleClick}>filter results</p>
-            <button onClick={BEERME}>Beer Me!</button>
-            <hr />
+            <div className={classes.background}>
+              <button onClick={BEERME}>Beer Me!</button>
+              <p onClick={handleClick}>filter results</p>
+            </div>
           </React.Fragment>
         )
       } else if (props.filterVisible) {
         return (
           <React.Fragment>
-            <hr />
-            <h3>Home Component</h3>
             <SelectorController
-              handleResetState={updateFunc}
             />
           </React.Fragment>
         )

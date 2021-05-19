@@ -1,5 +1,5 @@
 import React from 'react';
-import { ReactReduxContext, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useFirestoreConnect, isLoaded } from 'react-redux-firebase';
 
 function Selector(props) {

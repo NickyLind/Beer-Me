@@ -14,12 +14,12 @@ function SelectorController(props) {
   // * logic for displaying between Selector and Detail Components will go here
   const handleClick = () => {
     const { dispatch } = props;
-    const action = a.toggleHomepage();
-    dispatch(action)
+    // const action = a.toggleHomepage();
+    // dispatch(action)
     const action3 = a.toggleFilter();
     dispatch(action3);
-    const action2 = a.toggleHomepage()
-    dispatch(action2)
+    // const action2 = a.toggleHomepage()
+    // dispatch(action2)
   }
 
   useFirestoreConnect([
@@ -69,7 +69,6 @@ function SelectorController(props) {
         <Selector
           toggleSelector={handleClick}
           onAddingQueryForRandomizer={handleGrabbingValuesForSearch}
-          onUpdateParent={props.handleResetState}
         />
       </React.Fragment>
     )
