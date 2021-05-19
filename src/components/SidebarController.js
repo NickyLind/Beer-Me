@@ -4,6 +4,7 @@ import * as a from "../actions/index.js";
 import { connect } from "react-redux";
 import firebase from "firebase/app";
 import "firebase/database";
+import { BsLayoutSidebarInset } from "react-icons/bs"
 
 function SidebarController(props) {
 
@@ -27,7 +28,6 @@ function SidebarController(props) {
     dispatch(action2)
   };
 
-  // ! add routing or toggling here that allows a user to log out
   let loginText = "";
   if (props.loginVisible) {
     loginText = "Log Out"
@@ -38,7 +38,8 @@ function SidebarController(props) {
   if (props.sidebarVisible) {
     return (
       <React.Fragment>
-        <button onClick={handleClick}>SidebarButton</button>
+        <div onClick={handleClick}><BsLayoutSidebarInset />
+        </div>
         <Sidebar
           onToggleSidebar={handleClick}
           onLogOut={handleLogOut}
@@ -49,7 +50,7 @@ function SidebarController(props) {
   } else {
     return (
       <React.Fragment>
-        <button onClick={handleClick}>SidebarButton</button>
+        <div onClick={handleClick}><BsLayoutSidebarInset /></div>
       </React.Fragment>
     )
   }

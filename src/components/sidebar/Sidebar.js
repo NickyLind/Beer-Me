@@ -2,11 +2,13 @@ import React from 'react';
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { withFirestore, isLoaded } from "react-redux-firebase";
-
+import { IoBeerOutline } from "react-icons/io5"
+import { AiOutlineHome } from "react-icons/ai"
+import { AiOutlineLogin } from "react-icons/ai"
+import { AiOutlineLogout } from "react-icons/ai"
 
 
 function Sidebar(props) {
-
   const auth = props.firebase.auth();
 
   const handleClickLogin = () => {
@@ -33,7 +35,9 @@ function Sidebar(props) {
     return (
       <React.Fragment>
         <br />
+        <AiOutlineHome />
         <Link to="/" onClick={handleToggleSideBar}>Home</Link><br />
+        <AiOutlineLogin />
         <Link to="/login" onClick={handleClickLogin} >Log In</Link><br />
         <hr />
       </React.Fragment>
@@ -44,8 +48,11 @@ function Sidebar(props) {
     return (
       <React.Fragment>
         <br />
+        <AiOutlineHome />
         <Link to="/" onClick={handleToggleSideBar}>Home</Link><br />
+        <AiOutlineLogout />
         <Link to="/login" onClick={handleClickLogin} >Log Out</Link><br />
+        <IoBeerOutline />
         <Link to="/userBreweries" onClick={handleToggleSideBar}>Your Breweries</Link><br />
         <hr />
       </React.Fragment>

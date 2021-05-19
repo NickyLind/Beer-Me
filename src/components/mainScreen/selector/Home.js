@@ -8,9 +8,11 @@ import { connect } from "react-redux"
 import classes from "./Home.module.css"
 
 
-
-
 function Home(props) {
+  const fadeHome = {
+    filter: "blur(2px)",
+    webkitFilter: "blur(2px)"
+  }
   useFirestoreConnect([
     { collection: "beers" },
     { collection: "breweries" }
@@ -50,10 +52,12 @@ function Home(props) {
     if ((props.beerMeDetails) && (props.selectedBeerQuery != null)) {
       return (
         <React.Fragment >
-          <Detail
-            toggleSelector={handleTryAgain}
-            randomBeer={props.selectedBeerQuery}
-          />
+          <div style={fadeHome}>
+            <Detail
+              toggleSelector={handleTryAgain}
+              randomBeer={props.selectedBeerQuery}
+            />
+          </div>
         </React.Fragment>
       )
     } else if ((props.beerMeDetails) && (props.selectedBeerQuery == null)) {

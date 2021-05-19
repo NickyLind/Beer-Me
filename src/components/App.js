@@ -5,27 +5,22 @@ import MainScreenController from "./../components/mainScreen/MainScreenControlle
 
 
 function App() {
-  // useFirestoreConnect([
-  //   { collection: "beers" }
-  // ])
-  // var beers = useSelector(state => state.firestore.ordered.beers)
-  // console.log(beers);
-  // // function shuffle(array) {
-  // //   var random = array.map(Math.random);
-  // //   array.sort(function (a, b) {
-  // //     return random[a] - random[b]
-  // //   });
-  // // }
-  // // console.log(shuffle(beers))
 
-  // // let shuffled = beers.map((a) => ({ sort: Math.random(), value: a })).sort((a, b) => a.sort - b.sort).map((a) => a.value)
-  // // console.log(shuffled)
-
+  const container = {
+    width: "500px",
+    marginLeft: "auto",
+    marginRight: "auto",
+    backgroundColor: "rgb(125, 125, 125)",
+    borderRadius: "12px",
+    boxShadow: "0 10px 8px rgba(0, 0, 0, 0.25)"
+  }
 
   return (
-    <React.Fragment>
-      <MainScreenController />
-    </React.Fragment>
+    <div style={container}>
+      <React.Fragment>
+        <MainScreenController />
+      </React.Fragment>
+    </div>
   )
 }
 
