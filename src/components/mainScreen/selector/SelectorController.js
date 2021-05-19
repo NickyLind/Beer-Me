@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Detail from "./Detail";
 import Selector from "./Selector";
+import Home from "./Home";
 import { connect } from "react-redux";
 import * as a from "../../../actions/index.js";
 import { useSelector } from "react-redux";
@@ -13,8 +14,14 @@ function SelectorController(props) {
   // * logic for displaying between Selector and Detail Components will go here
   const handleClick = () => {
     const { dispatch } = props;
-    const action = a.toggleBeerMe();
+    const action = a.toggleBeerSelector();
     dispatch(action);
+  }
+
+  const displayHome = () => {
+    const { dispatch } = props;
+    const action = a.toggleHomePage()
+    dispatch(action)
   }
 
 
@@ -25,45 +32,32 @@ function SelectorController(props) {
   var beers = useSelector(state => state.firestore.ordered.beers)
   var breweries = useSelector(state => state.firestore.ordered.breweries)
 
-  const handleGrabbingValuesForSearch = async (selectedBeer, selectedBrewery) => {
-    var beerArray = []
-    await firebase.firestore().collection("beers").where("style", "==", selectedBeer)
-      .get()
-      .then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-          beerArray.push
-            (doc.id)
-        });
-        console.log(beerArray)
-        return beerArray
-      })
-    var shuffleArray = []
-    for (let i = 0; i < beerArray.length; i++) {
-      shuffleArray.push(i)
+  const handleGrabbingValuesForSearch = (selectedBeer, selectedBrewery) => {
+    console.log(selectedBeer)
+    if (selectedBeer == "N/A") {
+      console.log("shuffle all beers")
+      handleClick()
+    } else {
+      firebase.firestore().collection("beers").where("style", "==", selectedBeer)
+        .get()
+        .then(querySnapshot => {
+          const data = querySnapshot.docs.map(doc => doc.id);
+          console.log(data)
+          var shuffleArray = []
+          for (let i = 0; i < data.length; i++) {
+            shuffleArray.push(i)
+          }
+          var shuffled = shuffleArray[Math.floor(Math.random() * shuffleArray.length)]
+          var result = beers.filter(beer => beer.id == data[shuffled])
+          console.log(result[0].id)
+          const { dispatch } = props;
+          const action = a.selectedQuery(result[0].id);
+          dispatch(action);
+        }).then(handleClick)
     }
-    var shuffled = shuffleArray[Math.floor(Math.random() * shuffleArray.length)]
-    var result = beers.filter(beer => beer.id == beerArray[shuffled])
-    grabResult(result)
-
   }
 
-  const grabResult = (result) => {
-    console.log(result[0])
-    return (result[0])
-  };
-
-
-  if ((props.beerMeDetails) && (isLoaded(beers))) {
-
-    return (
-      <React.Fragment>
-        <Detail
-          toggleSelector={handleClick}
-          randomBeer={grabResult}
-        />
-      </React.Fragment>
-    );
-  } else if ((!props.beerMeDetails) && (isLoaded(beers))) {
+  if ((!props.beerMeDetails) && (isLoaded(beers))) {
 
     return (
       <React.Fragment>
@@ -75,7 +69,9 @@ function SelectorController(props) {
     )
   } else {
     return (
-      <h3>Loading...</h3>
+      <React.Fragment>
+
+      </React.Fragment>
     )
   }
 
@@ -84,6 +80,7 @@ function SelectorController(props) {
 const mapStateToProps = state => {
   return {
     beerMeDetails: state.beerMeDetails,
+    selectedBeerQuery: state.selectedBeerQuery
   }
 };
 
@@ -91,17 +88,6 @@ SelectorController = connect(mapStateToProps)(SelectorController);
 
 export default SelectorController;
 
-    // const handleGrabbingValuesForSearch = (selectedBeer, selectedBrewery) => {
-    //   const beerStyle = beers.where(`${beers.style}`, "==", `${selectedBeer}`)
-    //   console.log(beerStyle)
-    //   const breweryName = breweries.where(`${breweries.style}`, "==", `${selectedBrewery}`)
-    //   console.log(breweryName)
-    // }
-    // function shuffle(array) {
-    //   return array[Math.floor(Math.random() * array.length)];
-    // }
-    // var unshuffled = Object.keys({ ...beers })
-    // let beerMeIndex = shuffle(unshuffled)
 
 
 //TODO The current randomizer probably isn't the most efficient, these are a couple that could potentially be faster and more random

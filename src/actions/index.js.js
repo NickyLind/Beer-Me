@@ -4,9 +4,13 @@ export const toggleSidebar = () => ({
   type: c.TOGGLE_SIDEBAR
 });
 
-export const toggleBeerMe = () => ({
+export const toggleBeerSelector = () => ({
   type: c.TOGGLE_BEER_SELECTOR
 });
+
+export const toggleHomePage = () => ({
+  type: c.TOGGLE_HOME_PAGE
+})
 
 export const toggleNewBeerForm = () => ({
   type: c.TOGGLE_BEER_FORM
@@ -28,6 +32,15 @@ export const selectedBrewery = (id) => ({
 export const unselectBrewery = () => ({
   type: c.UNSELECT_BREWERY
 });
+
+export const selectedQuery = (id) => ({
+  type: c.SELECT_QUERY,
+  id
+});
+
+export const unselectQuery = () => ({
+  type: c.UNSELECT_QUERY
+})
 
 export const selectedBeer = (id) => ({
   type: c.SELECT_BEER,

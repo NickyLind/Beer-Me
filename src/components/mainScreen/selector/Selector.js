@@ -57,7 +57,7 @@ function Selector(props) {
             })}
           </select>
           <br />
-          <button type={'submit'}>Beer Me!</button>
+          <button type={'submit'}>Ok!</button>
         </form>
         <hr />
       </React.Fragment>
