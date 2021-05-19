@@ -2,3 +2,9 @@
   background-color: rgb(0, 174, 255);
   text-align: center;
 }
+
+.fadeHome  {
+  /* filter: "blur(2px)";
+  -webkit-filter: "blur(2px)" */
+  background-color: orange;
+}
