@@ -17,6 +17,7 @@ function SelectorController(props) {
     dispatch(action);
   }
 
+
   useFirestoreConnect([
     { collection: "beers" },
     { collection: "breweries" }
@@ -33,41 +34,42 @@ function SelectorController(props) {
           beerArray.push
             (doc.id);
         });
-        var unshuffled = Object.values({ ...beers })
-        unshuffled.forEach(element => {
-          idArray.push(element.id)
-        });
-        console.log("idArray " + idArray)
-        var query = idArray.filter(index => beerArray.includes(index))
-        grabQuery(query)
+        console.log(beerArray)
+        var shuffleArray = []
+        for (let i = 0; i < beerArray.length; i++) {
+          shuffleArray.push(i)
+        }
+        var shuffled = shuffleArray[Math.floor(Math.random() * shuffleArray.length)]
+        var result = beers.filter(beer => beer.id == beerArray[shuffled])
+        console.log(result)
       })
     return (beerStyle)
   }
 
-  function grabQuery(content) {
-    console.log(content)
-    var shuffleArray = []
-    for (let i = 0; i < content.length; i++) {
-      shuffleArray.push(i)
-    }
-    var shuffled = shuffleArray[Math.floor(Math.random() * shuffleArray.length)]
-    console.log(shuffled)
-    var result = beers.filter(beer => beer.id == content[shuffled])
-    console.log(result)
-    return result
-  }
-  function shuffle(array) {
-    return array[Math.floor(Math.random() * array.length)];
-  }
+  // var helpMeGod = []
+  // function grabQuery(content) {
+  //     console.log(content)
+  //     var shuffleArray = []
+  //     for (let i = 0; i < content.length; i++) {
+  //       shuffleArray.push(i)
+  //     }
+  //     var shuffled = shuffleArray[Math.floor(Math.random() * shuffleArray.length)]
+  //     console.log(shuffled)
+  //     var result = beers.filter(beer => beer.id == content[shuffled])
+  //     console.log(result)
+  //     helpMeGod.push(result)
+  // }
+  // function shuffle(array) {
+  //   return array[Math.floor(Math.random() * array.length)];
+  // }
   //* since this is going to be what's passed in as an argument to the shuffle function it will need to be filtered to only include the results of the selectedBeer && selectedBrewery UNLESS neither are selected
-  var unshuffled = Object.keys({ ...beers })
-  console.log(unshuffled)
+  // var unshuffled = Object.keys({ ...beers })
+  // console.log(unshuffled)
 
-  let beerMeIndex = shuffle(unshuffled)
-  console.log(beerMeIndex)
+  // let beerMeIndex = shuffle(unshuffled)
+  // console.log(beerMeIndex)
 
   if ((props.beerMeDetails) && (isLoaded(beers))) {
-
     // function shuffle(array) {
     //   return array[Math.floor(Math.random() * array.length)];
     // }
@@ -78,7 +80,7 @@ function SelectorController(props) {
       <React.Fragment>
         <Detail
           toggleSelector={handleClick}
-          randomBeer={() => grabQuery}
+        // randomBeer={helpMeGod}
         />
       </React.Fragment>
     );

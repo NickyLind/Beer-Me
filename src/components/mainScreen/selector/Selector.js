@@ -15,7 +15,7 @@ function Selector(props) {
 
   const giveValuesToSearch = event => {
     event.preventDefault();
-    props.toggleSelector();
+    // props.toggleSelector();
     return props.onAddingQueryForRandomizer(
 
       event.target.selectedBeer.value,
