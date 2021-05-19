@@ -34,7 +34,7 @@ function SelectorController(props) {
 
   const handleGrabbingValuesForSearch = (selectedBeer, selectedBrewery) => {
     console.log(selectedBeer)
-    if (selectedBeer == "N/A") {
+    if ((selectedBeer == "N/A") || (selectedBeer == null)) {
       console.log("shuffle all beers")
       function shuffle(array) {
         return array[Math.floor(Math.random() * array.length)];
