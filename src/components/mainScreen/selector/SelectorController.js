@@ -25,71 +25,46 @@ function SelectorController(props) {
   var beers = useSelector(state => state.firestore.ordered.beers)
   var breweries = useSelector(state => state.firestore.ordered.breweries)
 
-  let idArray = []
   const handleGrabbingValuesForSearch = async (selectedBeer, selectedBrewery) => {
     var beerArray = []
-    const beerStyle = await firebase.firestore().collection("beers").where("style", "==", selectedBeer).get()
+    await firebase.firestore().collection("beers").where("style", "==", selectedBeer)
+      .get()
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
           beerArray.push
-            (doc.id);
+            (doc.id)
         });
         console.log(beerArray)
-        var shuffleArray = []
-        for (let i = 0; i < beerArray.length; i++) {
-          shuffleArray.push(i)
-        }
-        var shuffled = shuffleArray[Math.floor(Math.random() * shuffleArray.length)]
-        var result = beers.filter(beer => beer.id == beerArray[shuffled])
-        console.log(result)
+        return beerArray
       })
-    return (beerStyle)
+    var shuffleArray = []
+    for (let i = 0; i < beerArray.length; i++) {
+      shuffleArray.push(i)
+    }
+    var shuffled = shuffleArray[Math.floor(Math.random() * shuffleArray.length)]
+    var result = beers.filter(beer => beer.id == beerArray[shuffled])
+    grabResult(result)
+
   }
 
-  // var helpMeGod = []
-  // function grabQuery(content) {
-  //     console.log(content)
-  //     var shuffleArray = []
-  //     for (let i = 0; i < content.length; i++) {
-  //       shuffleArray.push(i)
-  //     }
-  //     var shuffled = shuffleArray[Math.floor(Math.random() * shuffleArray.length)]
-  //     console.log(shuffled)
-  //     var result = beers.filter(beer => beer.id == content[shuffled])
-  //     console.log(result)
-  //     helpMeGod.push(result)
-  // }
-  // function shuffle(array) {
-  //   return array[Math.floor(Math.random() * array.length)];
-  // }
-  //* since this is going to be what's passed in as an argument to the shuffle function it will need to be filtered to only include the results of the selectedBeer && selectedBrewery UNLESS neither are selected
-  // var unshuffled = Object.keys({ ...beers })
-  // console.log(unshuffled)
+  const grabResult = (result) => {
+    console.log(result[0])
+    return (result[0])
+  };
 
-  // let beerMeIndex = shuffle(unshuffled)
-  // console.log(beerMeIndex)
 
   if ((props.beerMeDetails) && (isLoaded(beers))) {
-    // function shuffle(array) {
-    //   return array[Math.floor(Math.random() * array.length)];
-    // }
-    // var unshuffled = Object.keys({ ...beers })
-    // let beerMeIndex = shuffle(unshuffled)
-    // console.log(beers[beerMeIndex])
+
     return (
       <React.Fragment>
         <Detail
           toggleSelector={handleClick}
-        // randomBeer={helpMeGod}
+          randomBeer={grabResult}
         />
       </React.Fragment>
     );
   } else if ((!props.beerMeDetails) && (isLoaded(beers))) {
-    // function shuffle(array) {
-    //   return array[Math.floor(Math.random() * array.length)];
-    // }
-    // var unshuffled = Object.keys({ ...beers })
-    // let beerMeIndex = shuffle(unshuffled)
+
     return (
       <React.Fragment>
         <Selector

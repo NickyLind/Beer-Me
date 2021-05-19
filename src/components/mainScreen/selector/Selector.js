@@ -26,6 +26,10 @@ function Selector(props) {
   }
 
   if ((isLoaded(beers)) && (isLoaded(breweries))) {
+    const array = beers.map((beer) =>
+      console.log(beer.styles))
+    console.log(array)
+    const noBeerRepeat = [...new Set(array)]
     return (
       <React.Fragment>
         <hr />
@@ -35,11 +39,12 @@ function Selector(props) {
           <label>Beer Type</label>
           <select id={"selectedBeer"}>
             <option value={"N/A"}>Any</option>
-            {beers.map((beer) => {
+
+            {/* {(noBeerRepeat).map((beer) => {
               return (
                 <option key={beer.id} value={beer.style}>{beer.style}</option>
               )
-            })}
+            })} */}
           </select>
           <br />
           <label>Brewery</label>
