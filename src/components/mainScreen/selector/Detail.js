@@ -4,7 +4,6 @@ function Detail(props) {
   const { randomBeer } = props
   return (
     <React.Fragment>
-      <hr />
       <h3><em>{randomBeer.name}</em></h3>
       <hr />
       <p>{randomBeer.breweryId}</p>
@@ -12,7 +11,6 @@ function Detail(props) {
       <p>ABV:{randomBeer.abv} </p>
       <p>{randomBeer.description}</p>
       <button onClick={props.toggleSelector}>try again!</button>
-      <hr />
     </React.Fragment>
   );
 };

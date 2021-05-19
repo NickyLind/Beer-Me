@@ -24,9 +24,6 @@ function Sidebar(props) {
   if (!isLoaded(auth)) {
     return (
       <React.Fragment>
-        <hr />
-        <h3><em>SideBar</em></h3>
-        <hr />
         <h3>...Loading</h3>
       </React.Fragment>
     );
@@ -35,9 +32,7 @@ function Sidebar(props) {
   if ((isLoaded(auth)) && (auth.currentUser == null)) {
     return (
       <React.Fragment>
-        <hr />
-        <h3><em>SideBar</em></h3>
-        <hr />
+        <br />
         <Link to="/" onClick={handleToggleSideBar}>Home</Link><br />
         <Link to="/login" onClick={handleClickLogin} >Log In</Link><br />
         <hr />
@@ -48,9 +43,7 @@ function Sidebar(props) {
   if ((isLoaded(auth)) && (auth.currentUser != null)) {
     return (
       <React.Fragment>
-        <hr />
-        <h3><em>SideBar</em></h3>
-        <hr />
+        <br />
         <Link to="/" onClick={handleToggleSideBar}>Home</Link><br />
         <Link to="/login" onClick={handleClickLogin} >Log Out</Link><br />
         <Link to="/userBreweries" onClick={handleToggleSideBar}>Your Breweries</Link><br />

@@ -1,7 +1,5 @@
 import React from 'react';
-import Detail from "./Detail";
 import Selector from "./Selector";
-import Home from "./Home";
 import { connect } from "react-redux";
 import * as a from "../../../actions/index.js";
 import { useSelector } from "react-redux";
@@ -14,12 +12,8 @@ function SelectorController(props) {
   // * logic for displaying between Selector and Detail Components will go here
   const handleClick = () => {
     const { dispatch } = props;
-    // const action = a.toggleHomepage();
-    // dispatch(action)
-    const action3 = a.toggleFilter();
-    dispatch(action3);
-    // const action2 = a.toggleHomepage()
-    // dispatch(action2)
+    const action = a.toggleFilter();
+    dispatch(action);
   }
 
   useFirestoreConnect([
@@ -27,12 +21,10 @@ function SelectorController(props) {
     { collection: "breweries" }
   ])
   var beers = useSelector(state => state.firestore.ordered.beers)
-  var breweries = useSelector(state => state.firestore.ordered.breweries)
+  // var breweries = useSelector(state => state.firestore.ordered.breweries)
 
   const handleGrabbingValuesForSearch = (selectedBeer, selectedBrewery) => {
-    console.log(selectedBeer)
-    if ((selectedBeer == "N/A") || (selectedBeer == null)) {
-      console.log("shuffle all beers")
+    if ((selectedBeer === "N/A") || (selectedBeer === null)) {
       function shuffle(array) {
         return array[Math.floor(Math.random() * array.length)];
       }
@@ -47,14 +39,12 @@ function SelectorController(props) {
         .get()
         .then(querySnapshot => {
           const data = querySnapshot.docs.map(doc => doc.id);
-          console.log(data)
           var shuffleArray = []
           for (let i = 0; i < data.length; i++) {
             shuffleArray.push(i)
           }
           var shuffled = shuffleArray[Math.floor(Math.random() * shuffleArray.length)]
-          var result = beers.filter(beer => beer.id == data[shuffled])
-          console.log(result[0].id)
+          var result = beers.filter(beer => beer.id === data[shuffled])
           const { dispatch } = props;
           const action = a.selectedQuery(result[0]);
           dispatch(action);

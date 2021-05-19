@@ -50,19 +50,15 @@ function Home(props) {
     if ((props.beerMeDetails) && (props.selectedBeerQuery != null)) {
       return (
         <React.Fragment >
-          <h3>Home Component</h3>
-          <p>filter results</p>
           <Detail
             toggleSelector={handleTryAgain}
             randomBeer={props.selectedBeerQuery}
           />
-          <hr />
         </React.Fragment>
       )
     } else if ((props.beerMeDetails) && (props.selectedBeerQuery == null)) {
       return (
         <React.Fragment>
-          <p>filter results</p>
           <Detail
             toggleSelector={handleTryAgain}
             randomBeer={beers[beerMeIndex]}

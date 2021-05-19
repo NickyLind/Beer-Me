@@ -32,9 +32,6 @@ function Selector(props) {
     const noBeerRepeat = [...new Set(array)]
     return (
       <React.Fragment>
-        <hr />
-        <h3><em>Selector</em></h3>
-        <hr />
         <form onSubmit={giveValuesToSearch}>
           <label>Beer Type</label>
           <select id={"selectedBeer"}>

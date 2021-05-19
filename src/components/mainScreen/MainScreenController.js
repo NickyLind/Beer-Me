@@ -1,5 +1,6 @@
 import React from 'react';
 import Home from "./selector/Home";
+import classes from "./MainScreenController.module.css";
 import FormController from "./forms/FormController";
 import LogInController from "./login/LogInController";
 import SidebarController from "../SidebarController";
@@ -18,7 +19,9 @@ function MainScreenController() {
           <FormController />
         </Route>
         <Route path="/">
-          <Home />
+          <div className={classes.background}>
+            <Home />
+          </div>
         </Route>
       </Switch>
     </Router>
