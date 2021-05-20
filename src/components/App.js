@@ -12,7 +12,6 @@ function App() {
     width: "100%",
     height: "100%",
     backgroundColor: "rgb(0, 132, 255)",
-    borderRadius: "12px",
     boxShadow: "0 10px 8px rgba(0, 0, 0, 0.25)"
   }
 

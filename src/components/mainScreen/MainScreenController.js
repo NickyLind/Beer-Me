@@ -26,7 +26,7 @@ function MainScreenController(props) {
           <Route path="/userBreweries">
             <FormController />
           </Route>
-          <Route path="/">
+          <Route exact path="/">
             <div className={classes.background}>
               <Home />
             </div>
