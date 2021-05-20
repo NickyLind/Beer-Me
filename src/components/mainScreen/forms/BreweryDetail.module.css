@@ -8,14 +8,3 @@
   padding-bottom: 5px;
   text-align: center;
 }
-
-.buttonRow {
-  display: flex;
-  justify-content: center;
-  padding: 5px;
-}
-
-hr {
-  border-top: 5px rgb(255, 206, 71);
-  width: 300px;
-}

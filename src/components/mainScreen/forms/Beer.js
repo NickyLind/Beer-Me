@@ -21,6 +21,7 @@ function Beer(props) {
         <button className={classes.button} onClick={editBeerButton}>Edit Beer</button>
         <button className={classes.button} onClick={deleteBeerButton}>Remove Beer</button>
       </div>
+      <hr />
     </React.Fragment>
   );
 };

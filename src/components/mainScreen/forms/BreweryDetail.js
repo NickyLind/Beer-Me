@@ -1,5 +1,5 @@
 import React from "react";
-// import PropTypes from "prop-types";
+import classes from "./BreweryDetail.module.css"
 
 function BreweryDetail(props) {
   const { brewery } = props;
@@ -11,7 +11,7 @@ function BreweryDetail(props) {
       <p>{brewery.description}</p>
       <p>{brewery.id}</p>
       <p>{brewery.userId}</p>
-      <button onClick={props.onUnselectBrewery}>Back to Brewery List</button>
+      <button className={classes.button} onClick={props.onUnselectBrewery}>Back to Brewery List</button>
     </React.Fragment>
   )
 };

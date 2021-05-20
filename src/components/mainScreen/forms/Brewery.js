@@ -1,5 +1,4 @@
 import React from "react";
-// import PropTypes from "prop-types";
 import Beer from "./Beer";
 import { useSelector } from "react-redux";
 import classes from "./Brewery.module.css"
@@ -67,6 +66,7 @@ function Brewery(props) {
             )
           })}
         </div>
+        <hr />
       </React.Fragment>
     )
   } else {

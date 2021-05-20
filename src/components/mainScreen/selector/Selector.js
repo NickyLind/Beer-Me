@@ -56,7 +56,6 @@ function Selector(props) {
           <br />
           <button className={classes.button} type={'submit'}>Ok!</button>
         </form>
-        <hr />
       </React.Fragment>
     );
   } else {

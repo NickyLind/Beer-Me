@@ -2,6 +2,7 @@
   background-color: rgb(0, 132, 255);
   height: 100%;
   width: 100%;
+  margin-top: 30%;
 }
 
 .beerMeButton {
@@ -20,4 +21,15 @@
   cursor: pointer;
   text-decoration: underline;
   color: tomato;
+  width: 100px;
+  height: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.filterResults p {
+  width: 100px;
+  height: 20px;
+  margin-left: auto;
+  margin-right: auto;
 }

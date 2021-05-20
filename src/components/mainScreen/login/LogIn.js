@@ -67,7 +67,7 @@ function LogIn(props) {
         />
         <button type="submit" className={classes.button}>Sign Up</button>
       </form>
-      <button className={classes.button} onClick={goHome.bind(props)}>Home</button>
+      <button className={classes.buttonHome} onClick={goHome.bind(props)}>Home</button>
     </React.Fragment>
   );
 };

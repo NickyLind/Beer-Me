@@ -38,10 +38,10 @@ function Sidebar(props) {
         <div style={{ height: "100%" }}>
           <div className={props.sidebarVisible ? classes.sidebar : classes.sidebarOpen}>
             <br />
-            <AiOutlineHome />
-            <Link to="/" onClick={handleToggleSideBar}>Home</Link><br />
-            <AiOutlineLogin />
-            <Link to="/login" onClick={handleClickLogin} >Log In</Link><br />
+            <AiOutlineHome color="white" />
+            <Link to="/" className={classes.sidebarText} onClick={handleToggleSideBar}>Home</Link><br />
+            <AiOutlineLogin color="white" />
+            <Link to="/login" className={classes.sidebarText} onClick={handleClickLogin} >Log In</Link><br />
           </div>
         </div>
       </React.Fragment>
@@ -54,12 +54,12 @@ function Sidebar(props) {
         <div style={{ height: "100%" }}>
           <div className={classes.sidebar}>
             <br />
-            <AiOutlineHome />
-            <Link to="/" onClick={handleToggleSideBar}>Home</Link><br />
-            <AiOutlineLogout />
-            <Link to="/login" onClick={handleClickLogin} >Log Out</Link><br />
-            <IoBeerOutline />
-            <Link to="/userBreweries" onClick={handleToggleSideBar}>Your Breweries</Link><br />
+            <AiOutlineHome color="white" />
+            <Link to="/" className={classes.sidebarText} onClick={handleToggleSideBar}>Home</Link><br />
+            <AiOutlineLogout color="white" />
+            <Link to="/login" className={classes.sidebarText} onClick={handleClickLogin} >Log Out</Link><br />
+            <IoBeerOutline className={classes.sidebarText} color="white" />
+            <Link to="/userBreweries" className={classes.sidebarText} onClick={handleToggleSideBar}>Your Breweries</Link><br />
           </div>
         </div>
       </React.Fragment>
