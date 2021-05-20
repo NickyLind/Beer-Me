@@ -21,7 +21,7 @@ function EditBeerForm(props) {
   }
   return (
     <React.Fragment>
-      <h3>~Edit Beer Form~</h3>
+      <h3>Edit Beer Form</h3>
       <ReusableBeerForm
         formSubmissionHandler={HandleEditBeerFormSubmission}
         onAddNewBeer={props.onClickBeerEdit}

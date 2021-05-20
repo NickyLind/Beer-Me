@@ -35,9 +35,6 @@ function LogIn(props) {
 
   return (
     <React.Fragment>
-      <hr />
-      <h3><em>LogIn Component</em></h3>
-      <hr />
       <form onSubmit={doSignIn}>
         <input
           type="text"
@@ -65,9 +62,7 @@ function LogIn(props) {
         />
         <button type="submit">Sign Up</button>
       </form>
-      <p>OR</p>
       <button onClick={goHome.bind(props)}>Home</button>
-      <hr />
     </React.Fragment>
   );
 };

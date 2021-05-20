@@ -4,7 +4,9 @@ import * as a from "../actions/index.js";
 import { connect } from "react-redux";
 import firebase from "firebase/app";
 import "firebase/database";
-import { BsLayoutSidebarInset } from "react-icons/bs"
+import { BsLayoutSidebarInset } from "react-icons/bs";
+import classes from "./SidebarController.module.css";
+
 
 function SidebarController(props) {
 
@@ -38,19 +40,25 @@ function SidebarController(props) {
   if (props.sidebarVisible) {
     return (
       <React.Fragment>
-        <div onClick={handleClick}><BsLayoutSidebarInset />
+        <div className={classes.sidebarButton}>
+          <div onClick={handleClick}><BsLayoutSidebarInset />
+          </div>
+          <div style={{ height: "100%" }}>
+            <Sidebar
+              onToggleSidebar={handleClick}
+              onLogOut={handleLogOut}
+              loginText={loginText}
+            />
+          </div>
         </div>
-        <Sidebar
-          onToggleSidebar={handleClick}
-          onLogOut={handleLogOut}
-          loginText={loginText}
-        />
       </React.Fragment>
     )
   } else {
     return (
       <React.Fragment>
-        <div onClick={handleClick}><BsLayoutSidebarInset /></div>
+        <div className={classes.sidebarButton}>
+          <div onClick={handleClick}><BsLayoutSidebarInset /></div>
+        </div>
       </React.Fragment>
     )
   }

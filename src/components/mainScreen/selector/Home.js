@@ -9,10 +9,7 @@ import classes from "./Home.module.css"
 
 
 function Home(props) {
-  const fadeHome = {
-    filter: "blur(2px)",
-    webkitFilter: "blur(2px)"
-  }
+
   useFirestoreConnect([
     { collection: "beers" },
     { collection: "breweries" }
@@ -52,7 +49,7 @@ function Home(props) {
     if ((props.beerMeDetails) && (props.selectedBeerQuery != null)) {
       return (
         <React.Fragment >
-          <div style={fadeHome}>
+          <div >
             <Detail
               toggleSelector={handleTryAgain}
               randomBeer={props.selectedBeerQuery}
@@ -75,8 +72,10 @@ function Home(props) {
         return (
           <React.Fragment>
             <div className={classes.background}>
-              <button onClick={BEERME}>Beer Me!</button>
-              <p onClick={handleClick}>filter results</p>
+              <button className={classes.beerMeButton} onClick={BEERME}>Beer Me!</button>
+              <div className={classes.filterResults}>
+                <p onClick={handleClick}>filter results</p>
+              </div>
             </div>
           </React.Fragment>
         )

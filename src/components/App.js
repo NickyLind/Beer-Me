@@ -7,20 +7,21 @@ import MainScreenController from "./../components/mainScreen/MainScreenControlle
 function App() {
 
   const container = {
-    width: "500px",
-    marginLeft: "auto",
-    marginRight: "auto",
-    backgroundColor: "rgb(125, 125, 125)",
+    margin: 0,
+    padding: 0,
+    width: "100%",
+    height: "100%",
+    backgroundColor: "rgb(0, 132, 255)",
     borderRadius: "12px",
     boxShadow: "0 10px 8px rgba(0, 0, 0, 0.25)"
   }
 
   return (
-    <div style={container}>
-      <React.Fragment>
+    <React.Fragment>
+      <div style={container}>
         <MainScreenController />
-      </React.Fragment>
-    </div>
+      </div>
+    </React.Fragment>
   )
 }
 

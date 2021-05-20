@@ -16,8 +16,6 @@ function Beer(props) {
       <h4>{props.name}</h4>
       <p>{props.style}</p>
       <p>{props.abv}</p>
-      <p>{props.description}</p>
-      <p>{props.breweryId}</p>
       <button onClick={editBeerButton}>Edit Beer</button>
       <button onClick={deleteBeerButton}>Remove Beer</button>
     </React.Fragment>

@@ -24,9 +24,6 @@ function BreweryList(props) {
   if (isLoaded(breweries)) {
     return (
       <React.Fragment>
-        <hr />
-        <h3><em>Brewery List Component</em></h3>
-        <hr />
         <div style={scrollBox}>
           {breweries
             .filter(brewery => brewery.userId === firebase.auth().currentUser.uid)

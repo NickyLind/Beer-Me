@@ -1,0 +1,24 @@
+.sidebar {
+  height: 100%;
+  box-shadow: 1px, 0px, 7px rgba(0, 0, 0, 0.3);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 25%;
+  max-width: 100px;
+  z-index: 200;
+  background-color: rgb(255, 187, 0);
+  /* transform: translateX(100%);
+  /* this might need to be 0 */
+  /* transition:  transform 2s; */
+} 
+
+.sidebar link {
+  text-decoration: none;
+  color: aliceblue;
+}
+
+.sidebarOpen {
+  /* transform: translateX(0); */
+  /* might need to change this to +100% since our sidebar isn't always showing */
+}

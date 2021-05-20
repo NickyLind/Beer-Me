@@ -16,13 +16,13 @@ function EditBreweryForm(props) {
       location: event.target.location.value,
       description: event.target.description.value,
     }
-    // return firestore.collection("breweries").doc(brewery.id).update(propertiesToUpdate)
+
     return firestore.update({ collection: "breweries", doc: brewery.id }, propertiesToUpdate)
   }
 
   return (
     <React.Fragment>
-      <h3>~Edit Brewery Form~</h3>
+      <h3>Edit Brewery Form</h3>
       <ReusableBreweryForm
         formSubmissionHandler={HandleEditBreweryFormSubmission}
         onAddNewBrewery={props.onClickBreweryEdit}

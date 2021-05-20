@@ -180,13 +180,7 @@ function FormController(props) {
         onUnselectBrewery={unselectBrewery}
       />
     )
-    // } else if () {
-    //   return (
-    //     <Confirm />
-    //     {/* CUConfirm = true */ }
-    //   {//* probably want something here to display differently when something is updated vs created (IE  different functions that pass data from new/edit brewery/beer that dispatch an actiontype for confirm. Maybe have 4 seperate confirm components for each, ten refactor later OR a switch case for Confirm that fits different states and sets a variable to display different textS)//
-    //   }
-    // )
+
   } else {
     if (!isLoaded(auth)) {
       return (

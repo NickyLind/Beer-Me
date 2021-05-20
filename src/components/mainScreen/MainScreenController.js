@@ -13,15 +13,13 @@ function MainScreenController(props) {
     filter: "blur(2px)",
     webkitFilter: "blur(2px)"
   }
-  const background = {
-    backgroundColor: "blue"
-  }
+
 
   return (
     <Router>
       <SidebarController />
       <Switch>
-        <div style={props.sidebarVisible ? fadeHome : background}>
+        <div style={props.sidebarVisible ? fadeHome : null}>
           <Route path="/login">
             <LogInController />
           </Route>

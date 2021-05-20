@@ -6,6 +6,14 @@ import { useFirestoreConnect, isLoaded } from "react-redux-firebase";
 
 function Brewery(props) {
 
+  const scrollBox = {
+    height: "250px",
+    width: "300px",
+    border: "1px solid #ccc",
+    font: "16px/26px Georgia, Garamond, Serif",
+    overflow: "auto"
+  }
+
   useFirestoreConnect([
     { collection: "beers" }
   ]);
@@ -35,23 +43,24 @@ function Brewery(props) {
         <button onClick={deleteBreweryButton}>Remove brewery</button>
         <button onClick={addNewBeerButton}>Add new beer</button>
 
-        {beers.filter(beer => beer.breweryId === props.name).map((beer) => {
-          return (
-            <Beer
-              name={beer.name}
-              style={beer.style}
-              abv={beer.abv}
-              description={beer.description}
-              id={beer.id}
-              key={beer.id}
-              breweryId={beer.breweryId}
-              onHandleBeerEditClick={props.onHandleBeerEditClick}
-              whenBeerClicked={props.whenBeerClicked}
-              onClickingDeleteBeer={props.onClickingDeleteBeer}
-            />
-          )
-        })}
-        <hr />
+        <div style={scrollBox}>
+          {beers.filter(beer => beer.breweryId === props.name).map((beer) => {
+            return (
+              <Beer
+                name={beer.name}
+                style={beer.style}
+                abv={beer.abv}
+                description={beer.description}
+                id={beer.id}
+                key={beer.id}
+                breweryId={beer.breweryId}
+                onHandleBeerEditClick={props.onHandleBeerEditClick}
+                whenBeerClicked={props.whenBeerClicked}
+                onClickingDeleteBeer={props.onClickingDeleteBeer}
+              />
+            )
+          })}
+        </div>
       </React.Fragment>
     )
   } else {
