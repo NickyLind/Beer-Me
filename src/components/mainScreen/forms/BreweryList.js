@@ -2,18 +2,11 @@ import React from 'react';
 import Brewery from "./Brewery";
 import { useSelector } from "react-redux";
 import { useFirestoreConnect, isLoaded, isEmpty } from "react-redux-firebase";
+import classes from "./BreweryList.module.css";
 import firebase from "firebase/app";
 import "firebase/database";
 
 function BreweryList(props) {
-
-  const scrollBox = {
-    height: "350px",
-    width: "400px",
-    border: "1px solid #ccc",
-    font: "16px/26px Georgia, Garamond, Serif",
-    overflow: "auto"
-  }
 
   useFirestoreConnect([
     { collection: "breweries" }
@@ -24,7 +17,7 @@ function BreweryList(props) {
   if (isLoaded(breweries)) {
     return (
       <React.Fragment>
-        <div style={scrollBox}>
+        <div className={classes.scrollbox}>
           {breweries
             .filter(brewery => brewery.userId === firebase.auth().currentUser.uid)
             .map((brewery) => {
@@ -49,7 +42,7 @@ function BreweryList(props) {
             })}
         </div>
 
-        <button onClick={props.onAddNewBrewery}>add new brewery</button>
+        <button className={classes.button} onClick={props.onAddNewBrewery}>add new brewery</button>
       </React.Fragment>
     );
   } else if (isEmpty(breweries)) {

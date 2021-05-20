@@ -64,7 +64,6 @@ function Home(props) {
             toggleSelector={handleTryAgain}
             randomBeer={beers[beerMeIndex]}
           />
-          <hr />
         </React.Fragment>
       )
     } else

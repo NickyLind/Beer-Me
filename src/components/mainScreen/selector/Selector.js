@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import classes from "./Selector.module.css"
 import { useFirestoreConnect, isLoaded } from 'react-redux-firebase';
 
 function Selector(props) {
@@ -34,7 +35,7 @@ function Selector(props) {
       <React.Fragment>
         <form onSubmit={giveValuesToSearch}>
           <label>Beer Type</label>
-          <select id={"selectedBeer"}>
+          <select className={classes.input} id={"selectedBeer"}>
             <option value={"N/A"}>Any</option>
             {(noBeerRepeat).map((beer) => {
               return (
@@ -44,7 +45,7 @@ function Selector(props) {
           </select>
           <br />
           <label>Brewery</label>
-          <select id={"selectedBrewery"}>
+          <select className={classes.input} id={"selectedBrewery"}>
             <option value={"N/A"}>Any</option>
             {breweries.map((brewery) => {
               return (
@@ -53,7 +54,7 @@ function Selector(props) {
             })}
           </select>
           <br />
-          <button type={'submit'}>Ok!</button>
+          <button className={classes.button} type={'submit'}>Ok!</button>
         </form>
         <hr />
       </React.Fragment>

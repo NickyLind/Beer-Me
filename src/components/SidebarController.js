@@ -41,7 +41,7 @@ function SidebarController(props) {
     return (
       <React.Fragment>
         <div className={classes.sidebarButton}>
-          <div onClick={handleClick}><BsLayoutSidebarInset />
+          <div onClick={handleClick}><BsLayoutSidebarInset size="1.5em" />
           </div>
           <div style={{ height: "100%" }}>
             <Sidebar
@@ -57,7 +57,7 @@ function SidebarController(props) {
     return (
       <React.Fragment>
         <div className={classes.sidebarButton}>
-          <div onClick={handleClick}><BsLayoutSidebarInset /></div>
+          <div onClick={handleClick}><BsLayoutSidebarInset size="1.5em" /></div>
         </div>
       </React.Fragment>
     )

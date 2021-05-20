@@ -1,10 +1,4 @@
-.background {
-  background-color: rgb(0, 132, 255);
-  height: 100%;
-  width: 100%;
-}
-
-.beerMeButton {
+.button {
   height: 50px;
   width: 100px;
   background-color: rgb(255, 206, 71);
@@ -15,9 +9,10 @@
   text-align: center;
 }
 
-.filterResults :hover{
-  padding-top: 5px;
-  cursor: pointer;
-  text-decoration: underline;
-  color: tomato;
+.input {
+  height: 50px;
+  border-radius: 5px;
+  border-radius: 1px solid rgb(255, 206, 71);
+  background: rgb(248, 242, 177);
+  margin: 5px;
 }

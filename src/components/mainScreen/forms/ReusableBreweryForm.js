@@ -1,4 +1,6 @@
 import React from 'react';
+import classes from "./ReusableForm.module.css"
+
 
 function ReusableBreweryForm(props) {
 
@@ -8,27 +10,30 @@ function ReusableBreweryForm(props) {
       <hr />
       <form onSubmit={props.formSubmissionHandler}>
         <input
+          className={classes.input}
           type="text"
           name="name"
           placeholder="Brewery Name"
           required
         />
         <input
+          className={classes.input}
           type="text"
           name="location"
           placeholder="Brewery Location"
           required
         />
         <input
+          className={classes.input}
           type="text"
           name="description"
           placeholder="Brewery Description"
           required
         />
-        <button>submit</button>
+        <button className={classes.button}>submit</button>
       </form>
       <hr />
-      <button onClick={props.onAddNewBrewery}>Go back</button>
+      <button className={classes.button} onClick={props.onAddNewBrewery}>Go back</button>
     </React.Fragment>
   )
 }

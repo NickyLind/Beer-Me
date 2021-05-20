@@ -2,11 +2,15 @@ import React from "react";
 // import PropTypes from "prop-types";
 import Beer from "./Beer";
 import { useSelector } from "react-redux";
+import classes from "./Brewery.module.css"
 import { useFirestoreConnect, isLoaded } from "react-redux-firebase";
 
 function Brewery(props) {
 
   const scrollBox = {
+    display: "block",
+    marginLeft: "auto",
+    marginRight: "auto",
     height: "250px",
     width: "300px",
     border: "1px solid #ccc",
@@ -39,11 +43,13 @@ function Brewery(props) {
     return (
       <React.Fragment>
         <h4 onClick={() => props.whenBreweryClicked(props.id)}>{props.name}</h4>
-        <button onClick={editBreweryButton}>Edit brewery</button>
-        <button onClick={deleteBreweryButton}>Remove brewery</button>
-        <button onClick={addNewBeerButton}>Add new beer</button>
-
-        <div style={scrollBox}>
+        <p>{props.location}</p>
+        <div className={classes.buttonRow}>
+          <button className={classes.button} onClick={editBreweryButton}>Edit brewery</button>
+          <button className={classes.button} onClick={deleteBreweryButton}>Remove brewery</button>
+          <button className={classes.button} onClick={addNewBeerButton}>Add new beer</button>
+        </div>
+        <div className={classes.scrollbox}>
           {beers.filter(beer => beer.breweryId === props.name).map((beer) => {
             return (
               <Beer

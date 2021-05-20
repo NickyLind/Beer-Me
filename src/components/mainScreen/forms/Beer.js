@@ -1,4 +1,5 @@
 import React from "react";
+import classes from "./Beer.module.css";
 
 function Beer(props) {
 
@@ -16,8 +17,10 @@ function Beer(props) {
       <h4>{props.name}</h4>
       <p>{props.style}</p>
       <p>{props.abv}</p>
-      <button onClick={editBeerButton}>Edit Beer</button>
-      <button onClick={deleteBeerButton}>Remove Beer</button>
+      <div className={classes.buttonRow}>
+        <button className={classes.button} onClick={editBeerButton}>Edit Beer</button>
+        <button className={classes.button} onClick={deleteBeerButton}>Remove Beer</button>
+      </div>
     </React.Fragment>
   );
 };

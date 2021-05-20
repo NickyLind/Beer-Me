@@ -1,16 +1,18 @@
 import React from 'react';
+import classes from "./Detail.module.css"
 
 function Detail(props) {
   const { randomBeer } = props
   return (
     <React.Fragment>
-      <h3><em>{randomBeer.name}</em></h3>
-      <hr />
-      <p>{randomBeer.breweryId}</p>
-      <p>Style: {randomBeer.style}</p>
-      <p>ABV:{randomBeer.abv} </p>
-      <p>{randomBeer.description}</p>
-      <button onClick={props.toggleSelector}>try again!</button>
+      <div className={classes.background}>
+        <h3><em>{randomBeer.name}</em></h3>
+        <p>{randomBeer.breweryId}</p>
+        <p>Style: {randomBeer.style}</p>
+        <p>ABV:{randomBeer.abv} </p>
+        <p>{randomBeer.description}</p>
+        <button className={classes.button} onClick={props.toggleSelector}>try again!</button>
+      </div>
     </React.Fragment>
   );
 };

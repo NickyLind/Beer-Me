@@ -7,6 +7,7 @@ import BreweryList from "./BreweryList";
 import { connect } from "react-redux";
 import * as a from "../../../actions/index.js";
 import BreweryDetail from './BreweryDetail';
+import classes from "./FormController.module.css"
 import { withFirestore, isLoaded } from "react-redux-firebase";
 
 function FormController(props) {
@@ -142,56 +143,70 @@ function FormController(props) {
 
   if (props.newBeerFormVisible) {
     return (
-      <NewBeerForm
-        onAddNewBeer={toggleNewBeerForm}
-        onNewBeerCreation={handleAddingNewBeerToList}
-      />
+      <div className={classes.background}>
+        <NewBeerForm
+          onAddNewBeer={toggleNewBeerForm}
+          onNewBeerCreation={handleAddingNewBeerToList}
+        />
+      </div>
     )
   } else if (props.beerEditing) {
     return (
-      <EditBeerForm
-        beer={props.selectedBeer}
-        onEditBeer={handleEditingBeerInList}
-        onClickBeerEdit={handleBeerEditClick}
-      />
+      <div className={classes.background}>
+        <EditBeerForm
+          beer={props.selectedBeer}
+          onEditBeer={handleEditingBeerInList}
+          onClickBeerEdit={handleBeerEditClick}
+        />
+      </div>
     )
 
     //* RETURN LOGIC FOR DISPLAYING BREWERY COMPONENTS ~~~~~~~
 
   } else if (props.newBreweryFormVisible) {
     return (
-      <NewBreweryForm
-        onAddNewBrewery={toggleNewBreweryForm}
-        onNewBreweryCreation={handleAddingNewBreweryToList}
-      />
+      <div className={classes.background}>
+        <NewBreweryForm
+          onAddNewBrewery={toggleNewBreweryForm}
+          onNewBreweryCreation={handleAddingNewBreweryToList}
+        />
+      </div>
     )
   } else if (props.breweryEditing) {
     return (
-      <EditBreweryForm
-        brewery={props.selectedBrewery}
-        onEditBrewery={handleEditingBreweryInList}
-        onClickBreweryEdit={handleEditGoBackButton}
-      />
+      <div className={classes.background}>
+        <EditBreweryForm
+          brewery={props.selectedBrewery}
+          onEditBrewery={handleEditingBreweryInList}
+          onClickBreweryEdit={handleEditGoBackButton}
+        />
+      </div>
     )
   } else if (props.selectedBrewery != null) {
     return (
-      <BreweryDetail
-        brewery={props.selectedBrewery}
-        onUnselectBrewery={unselectBrewery}
-      />
+      <div className={classes.background}>
+        <BreweryDetail
+          brewery={props.selectedBrewery}
+          onUnselectBrewery={unselectBrewery}
+        />
+      </div>
     )
 
   } else {
     if (!isLoaded(auth)) {
       return (
         <React.Fragment>
-          <h3>...Loading</h3>
+          <div className={classes.background}>
+            <h3>...Loading</h3>
+          </div>
         </React.Fragment>
       )
     } else if ((isLoaded(auth)) && (auth.currentUser == null)) {
       return (
         <React.Fragment>
-          <h3>You must be logged in to view your breweries</h3>
+          <div className={classes.background}>
+            <h3>You must be logged in to view your breweries</h3>
+          </div>
         </React.Fragment>
       )
     } else {

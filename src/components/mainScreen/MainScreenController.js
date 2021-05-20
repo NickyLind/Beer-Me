@@ -21,10 +21,14 @@ function MainScreenController(props) {
       <Switch>
         <div style={props.sidebarVisible ? fadeHome : null}>
           <Route path="/login">
-            <LogInController />
+            <div className={classes.background}>
+              <LogInController />
+            </div>
           </Route>
           <Route path="/userBreweries">
-            <FormController />
+            <div className={classes.background}>
+              <FormController />
+            </div>
           </Route>
           <Route exact path="/">
             <div className={classes.background}>
