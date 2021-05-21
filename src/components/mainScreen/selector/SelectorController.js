@@ -24,15 +24,22 @@ function SelectorController(props) {
   // var breweries = useSelector(state => state.firestore.ordered.breweries)
 
   const handleGrabbingValuesForSearch = (selectedStyle, selectedBrewery) => {
-    firebase.firestore().collection("beers").where("style", "==", selectedStyle)
-      .get()
-      .then(querySnapshot => {
-        const data = querySnapshot.docs.map(doc => doc.id);
-        console.log(data)
-        const { dispatch } = props;
-        const action = a.selectedBeerStyle(data);
-        dispatch(action);
-      }).then(handleClick)
+    if (selectedStyle === "N/A") {
+      const { dispatch } = props;
+      const action = a.selectedQuery(beers);
+      dispatch(action);
+      handleClick()
+    } else {
+      firebase.firestore().collection("beers").where("style", "==", selectedStyle)
+        .get()
+        .then(querySnapshot => {
+          const data = querySnapshot.docs.map(doc => doc.id);
+          console.log(data)
+          const { dispatch } = props;
+          const action = a.selectedBeerStyle(data);
+          dispatch(action);
+        }).then(handleClick)
+    }
   }
   //* i'm thinking we set data(which is an array of the beers that match the beer style) to a state slice. ✅
   //* we then put everything below into a new function where we can shuffle it and gather the randomized beer from that array.

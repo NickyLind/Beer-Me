@@ -47,7 +47,7 @@ function Home(props) {
   }
 
   const shuffleFunction = () => {
-    if ((props.selectedBeerStyle === null) || (props.selectedBeerStyle === "N/A")) {
+    if ((props.selectedBeerStyle === null) || (props.selectedBeerStyle === [])) {
       let beerMeIndex = shuffle(Object.keys({ ...beers }))
       const { dispatch } = props;
       const action = a.selectedQuery(beers[beerMeIndex]);
