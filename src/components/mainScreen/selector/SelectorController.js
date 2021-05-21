@@ -23,8 +23,8 @@ function SelectorController(props) {
   var beers = useSelector(state => state.firestore.ordered.beers)
   // var breweries = useSelector(state => state.firestore.ordered.breweries)
 
-  const handleGrabbingValuesForSearch = (selectedBeer, selectedBrewery) => {
-    if ((selectedBeer === "N/A") || (selectedBeer === null)) {
+  const handleGrabbingValuesForSearch = (selectedStyle, selectedBrewery) => {
+    if ((selectedStyle === "N/A") || (selectedStyle === null)) {
       function shuffle(array) {
         return array[Math.floor(Math.random() * array.length)];
       }
@@ -35,7 +35,7 @@ function SelectorController(props) {
       dispatch(action);
       handleClick()
     } else {
-      firebase.firestore().collection("beers").where("style", "==", selectedBeer)
+      firebase.firestore().collection("beers").where("style", "==", selectedStyle)
         .get()
         .then(querySnapshot => {
           const data = querySnapshot.docs.map(doc => doc.id);

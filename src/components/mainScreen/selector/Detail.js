@@ -11,7 +11,8 @@ function Detail(props) {
         <p>Style: {randomBeer.style}</p>
         <p>ABV:{randomBeer.abv} </p>
         <p>{randomBeer.description}</p>
-        <button className={classes.button} onClick={props.toggleSelector}>try again!</button>
+        <button className={classes.button} onClick={props.toggleSelector}>try something new!</button>
+        {/* <button className={classes.button} onClick={props.toggleSelector}>try again!</button> */}
       </div>
     </React.Fragment>
   );

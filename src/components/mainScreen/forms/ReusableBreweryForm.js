@@ -7,7 +7,6 @@ function ReusableBreweryForm(props) {
   return (
     <React.Fragment>
       <h3><em>Reusable Brewery Form</em></h3>
-      <hr />
       <form onSubmit={props.formSubmissionHandler}>
         <input
           className={classes.input}
@@ -32,7 +31,6 @@ function ReusableBreweryForm(props) {
         />
         <button className={classes.button}>submit</button>
       </form>
-      <hr />
       <button className={classes.button} onClick={props.onAddNewBrewery}>Go back</button>
     </React.Fragment>
   )
