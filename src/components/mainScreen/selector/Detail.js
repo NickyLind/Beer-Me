@@ -11,7 +11,7 @@ function Detail(props) {
         <p>{randomBeer.breweryId}</p>
         <p>Style: {randomBeer.style}</p>
         <p>ABV:{randomBeer.abv} </p>
-        <p>{randomBeer.description}</p>
+        <p className={classes.scrollbox}>{randomBeer.description}</p>
         <div className={classes.buttonRow}>
           <button className={classes.button} onClick={props.toggleSelector}>try something new!</button>
           <button className={classes.button} onClick={props.beerMeButton}>try again!</button>

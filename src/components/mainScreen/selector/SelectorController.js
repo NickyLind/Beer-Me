@@ -26,7 +26,8 @@ function SelectorController(props) {
   const handleGrabbingValuesForSearch = (selectedStyle, selectedBrewery) => {
     if (selectedStyle === "N/A") {
       const { dispatch } = props;
-      const action = a.selectedQuery(beers);
+      const data = beers.map(doc => doc.id);
+      const action = a.selectedBeerStyle(data);
       dispatch(action);
       handleClick()
     } else {
@@ -34,7 +35,6 @@ function SelectorController(props) {
         .get()
         .then(querySnapshot => {
           const data = querySnapshot.docs.map(doc => doc.id);
-          console.log(data)
           const { dispatch } = props;
           const action = a.selectedBeerStyle(data);
           dispatch(action);

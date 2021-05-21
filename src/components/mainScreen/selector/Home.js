@@ -57,7 +57,6 @@ function Home(props) {
       for (let i = 0; i < props.selectedBeerStyle.length; i++) {
         shuffleArray.push(i)
       }
-      console.log(shuffleArray);
       var shuffled = shuffleArray[Math.floor(Math.random() * shuffleArray.length)]
       var result = beers.filter(beer => beer.id === props.selectedBeerStyle[shuffled])
       console.log(result)
