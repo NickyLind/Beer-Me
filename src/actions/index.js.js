@@ -40,7 +40,16 @@ export const selectedQuery = (id) => ({
 
 export const unselectQuery = () => ({
   type: c.UNSELECT_QUERY
-})
+});
+
+export const selectedBeerStyle = (id) => ({
+  type: c.SELECT_BEER_STYLE,
+  id
+});
+
+export const unselectBeerStyle = () => ({
+  type: c.UNSELECT_BEER_STYLE
+});
 
 export const selectedBeer = (id) => ({
   type: c.SELECT_BEER,

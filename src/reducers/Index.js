@@ -11,11 +11,13 @@ import selectedBeerReducer from "./selected-beer-reducer";
 import { firestoreReducer } from "redux-firestore";
 import queriedBeerReducer from "./queried-beer-reducer";
 import filterToggleReducer from "./filter-toggle-reducer";
+import selectedBeerStyleReducer from "./selected-beer-style-reducer";
 
 
 const rootReducer = combineReducers({
   sidebarVisible: sidebarVisibleReducer,
   selectedBeerQuery: queriedBeerReducer,
+  selectedBeerStyle: selectedBeerStyleReducer,
   beerMeDetails: selectorToggleReducer,
   newBeerFormVisible: beerFormVisibleOnPage,
   newBreweryFormVisible: breweryFormVisibleOnPage,

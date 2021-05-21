@@ -40,9 +40,32 @@ function Home(props) {
   }
 
   const BEERME = () => {
+    shuffleFunction();
     const { dispatch } = props;
     const action = a.toggleBeerSelector();
     dispatch(action);
+  }
+
+  const shuffleFunction = () => {
+    if ((props.selectedBeerStyle === null) || (props.selectedBeerStyle === "N/A")) {
+      let beerMeIndex = shuffle(Object.keys({ ...beers }))
+      const { dispatch } = props;
+      const action = a.selectedQuery(beers[beerMeIndex]);
+      dispatch(action);
+    } else {
+      var shuffleArray = []
+      for (let i = 0; i < props.selectedBeerStyle.length; i++) {
+        shuffleArray.push(i)
+      }
+      console.log(shuffleArray);
+      var shuffled = shuffleArray[Math.floor(Math.random() * shuffleArray.length)]
+      var result = beers.filter(beer => beer.id === props.selectedBeerStyle[shuffled])
+      console.log(result)
+      const { dispatch } = props;
+      const action = a.selectedQuery(result[0]);
+      dispatch(action);
+    }
+    //TODO also set this new function so the same beer wont be generated 2x in a row in this function later (maybe pop up a dialogue that says there's only the one beer if the array.length is 1)
   }
 
   if (isLoaded(beers)) {
@@ -52,6 +75,7 @@ function Home(props) {
           <div >
             <Detail
               toggleSelector={handleTryAgain}
+              beerMeButton={shuffleFunction}
               randomBeer={props.selectedBeerQuery}
             />
           </div>
@@ -104,7 +128,10 @@ const mapStateToProps = state => {
   return {
     beerMeDetails: state.beerMeDetails,
     filterVisible: state.filterVisible,
-    selectedBeerQuery: state.selectedBeerQuery
+    selectedBeerQuery: state.selectedBeerQuery,
+    // * name of the single beer that is picked
+    selectedBeerStyle: state.selectedBeerStyle
+    // * name of the array of beers of a specific style
   }
 }
 

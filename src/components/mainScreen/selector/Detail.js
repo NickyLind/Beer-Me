@@ -1,5 +1,6 @@
 import React from 'react';
-import classes from "./Detail.module.css"
+import classes from "./Detail.module.css";
+import * as a from "../../../actions/index.js";
 
 function Detail(props) {
   const { randomBeer } = props
@@ -12,7 +13,7 @@ function Detail(props) {
         <p>ABV:{randomBeer.abv} </p>
         <p>{randomBeer.description}</p>
         <button className={classes.button} onClick={props.toggleSelector}>try something new!</button>
-        {/* <button className={classes.button} onClick={props.toggleSelector}>try again!</button> */}
+        <button className={classes.button} onClick={props.beerMeButton}>try again!</button>
       </div>
     </React.Fragment>
   );

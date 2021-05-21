@@ -24,34 +24,22 @@ function SelectorController(props) {
   // var breweries = useSelector(state => state.firestore.ordered.breweries)
 
   const handleGrabbingValuesForSearch = (selectedStyle, selectedBrewery) => {
-    if ((selectedStyle === "N/A") || (selectedStyle === null)) {
-      function shuffle(array) {
-        return array[Math.floor(Math.random() * array.length)];
-      }
-      var unshuffled = Object.keys({ ...beers })
-      let beerMeIndex = shuffle(unshuffled)
-      const { dispatch } = props;
-      const action = a.selectedQuery(beers[beerMeIndex]);
-      dispatch(action);
-      handleClick()
-    } else {
-      firebase.firestore().collection("beers").where("style", "==", selectedStyle)
-        .get()
-        .then(querySnapshot => {
-          const data = querySnapshot.docs.map(doc => doc.id);
-          var shuffleArray = []
-          for (let i = 0; i < data.length; i++) {
-            shuffleArray.push(i)
-          }
-          var shuffled = shuffleArray[Math.floor(Math.random() * shuffleArray.length)]
-          var result = beers.filter(beer => beer.id === data[shuffled])
-          const { dispatch } = props;
-          const action = a.selectedQuery(result[0]);
-          dispatch(action);
-        }).then(handleClick)
-    }
+    firebase.firestore().collection("beers").where("style", "==", selectedStyle)
+      .get()
+      .then(querySnapshot => {
+        const data = querySnapshot.docs.map(doc => doc.id);
+        console.log(data)
+        const { dispatch } = props;
+        const action = a.selectedBeerStyle(data);
+        dispatch(action);
+      }).then(handleClick)
   }
-
+  //* i'm thinking we set data(which is an array of the beers that match the beer style) to a state slice. ✅
+  //* we then put everything below into a new function where we can shuffle it and gather the randomized beer from that array.
+  function shuffle(array) {
+    return array[Math.floor(Math.random() * array.length)];
+  }
+  //TODO also set this new function so the same beer wont be generated 2x in a row in this function later (maybe pop up a dialogue that says there's only the one beer if the array.length is 1)
   if ((!props.beerMeDetails) && (isLoaded(beers))) {
 
     return (
@@ -75,7 +63,8 @@ function SelectorController(props) {
 const mapStateToProps = state => {
   return {
     beerMeDetails: state.beerMeDetails,
-    selectedBeerQuery: state.selectedBeerQuery
+    selectedBeerQuery: state.selectedBeerQuery,
+    selectedBeerStyle: state.selectedBeerStyle
   }
 };
 
