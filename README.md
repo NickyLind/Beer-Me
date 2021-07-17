@@ -54,7 +54,7 @@ As this application is in alpha right now I have plans to develop it for React N
 
 ## Known Bugs
 
-* _N/A_
+* _The firebase server has expired because I am going to be working on the beta soon with React Native, and don't plan on continuin with this Alpha Web Application_
 
 
 ## License
