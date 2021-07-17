@@ -49,6 +49,9 @@ Here is a diagram of how all the components are structured
 Here is the initial whiteboarding I did to plan out this project and it's features
 ![whiteboarding](/src/img/whiteboard.jpg)
 
+## Future Plans
+As this application is in alpha right now I have plans to develop it for React Native for IOS and Android as well as add geolocation features I am in the process of learning right now. I also plan on making a much nicer UI with animations. The plan is to deploy this application once I have recreated it in React Native and refactored it without the Redux state management I had used to showcase my skills in Redux.
+
 ## Known Bugs
 
 * _N/A_
